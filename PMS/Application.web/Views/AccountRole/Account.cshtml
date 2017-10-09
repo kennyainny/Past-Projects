@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Application.Web.Models.ContributionScheduleTableDTO>
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+
+ <div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format"
+                     style="">
+                    <h2><i class="icon-list-alt"></i> Contribution Schedule Format</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+
+                        <button class="btn btn-primary" title="Add new record" style="margin-left: 5px;" @*value="A" *@
+                                onclick="location.href='@Url.Action("CreateAccount")'">
+                            <i class="fa fa-plus-circle"></i> Create Account
+                        </button>
+
+                            
+                            <button class="btn btn-info" title="Post Contribution Schedule"
+                                    onclick="location.href='@Url.Action("PostSchedule")'">
+                                <i class="fa fa-share-square-o"></i> Manage Accounts
+                            </button>
+
+                        <fieldset class="section" style="margin-top: 10px">
+                            <legend>Choose an Account: </legend>
+                            @*<div class="well span11">*@
+                            @using (@Html.BeginForm("Account", "AccountRole",
+                                    FormMethod.Post, new { id = "Accountform" }))
+                            {
+                                <div class="control-group" style="margin-bottom: 5px; margin-top: 0px;">
+                                    <label class="control-label label">Accounts:</label>
+
+                                    @*@Html.DropDownList("SelectedDistrictId",
+                                        (SelectList)TempData["DistrictSelectList"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 25px;",
+                                            onchange = "document.getElementById('ContributionForm').submit();"
+                                        })*@
+                                </div>
+                                    <p>@Html.DropDownList("AccountID", string.Empty)
+                                        <button class="btn btn-info" title="Post Contribution Schedule"
+                                                onclick="location.href='@Url.Action("PostSchedule")'">
+                                            <i class="fa fa-share-square-o"></i> Activate
+                                        </button>
+                            </p>
+                                
+                                
+                            }
+                        </fieldset>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

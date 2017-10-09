@@ -1,0 +1,54 @@
+﻿@model Application.Web.Models.AccountGroup
+
+@{
+    ViewBag.Title = "AddGroup";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<h2>AddGroup</h2>
+
+@using (Html.BeginForm("AddGroup", "AccountRole",
+    FormMethod.Post, new { id = "AccountForm" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>AccountGroup</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name,"From Name: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.parent_id, "Parrent Group: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.parent_id, (SelectList)ViewBag.AccountID, string.Empty)
+                @*@Html.EditorFor(model => model.parent_id)*@
+                @Html.ValidationMessageFor(model => model.parent_id)
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.affects_gross, "Affects Gross: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.affects_gross)
+                @Html.ValidationMessageFor(model => model.affects_gross)
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:10px; margin-left:200px">
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" value="Create" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

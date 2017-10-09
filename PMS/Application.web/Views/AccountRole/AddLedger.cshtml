@@ -1,0 +1,82 @@
+﻿@model Application.Web.Models.ledger
+
+@{
+    ViewBag.Title = "AddLedger";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<h2>AddLedger</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ledger</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.group_id,"Parent Group: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.group_id, (SelectList)ViewBag.AccountID, string.Empty)
+                @*@Html.EditorFor(model => model.group_id)*@
+                @Html.ValidationMessageFor(model => model.group_id)
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.name,"Ledger Name: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.op_balance, "Opening balance", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">           
+                <select name="op_balance_dc">
+                    <option value="D">Dr</option>
+                    <option value="C">Cr</option>
+                </select>
+                                @Html.EditorFor(model => model.op_balance)
+                @Html.ValidationMessageFor(model => model.op_balance)
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:10px">
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.op_balance_dc)*@
+                @Html.ValidationMessageFor(model => model.op_balance_dc)
+            </div>
+        </div>
+        <br/>
+        <div class="form-group" style="margin-top:10px">
+            @Html.LabelFor(model => model.type, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                @*@Html.EditorFor(model => model.type)*@
+                @Html.DropDownListFor(model => model.type, (SelectList)ViewBag.Type, string.Empty)
+                @Html.ValidationMessageFor(model => model.type)
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.reconciliation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.reconciliation)
+                @Html.ValidationMessageFor(model => model.reconciliation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

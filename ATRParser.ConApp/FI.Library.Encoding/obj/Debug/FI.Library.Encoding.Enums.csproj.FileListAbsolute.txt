@@ -1,0 +1,5 @@
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\FI\FI.Library.Encoding.Enums\bin\Debug\FI.Library.Encoding.Enums.dll
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\FI\FI.Library.Encoding.Enums\bin\Debug\FI.Library.Encoding.Enums.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\FI\FI.Library.Encoding.Enums\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\FI\FI.Library.Encoding.Enums\obj\Debug\FI.Library.Encoding.Enums.dll
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\FI\FI.Library.Encoding.Enums\obj\Debug\FI.Library.Encoding.Enums.pdb

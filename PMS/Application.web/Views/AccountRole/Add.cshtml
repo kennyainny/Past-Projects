@@ -1,0 +1,683 @@
+﻿@model List<Application.Web.Models.entry>
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        /* javascript floating point operations */
+        var jsFloatOps = function (param1, param2, op) {
+            param1 = param1 * 100;
+            param2 = param2 * 100;
+            param1 = param1.toFixed(0);
+            param2 = param2.toFixed(0);
+            param1 = Math.floor(param1);
+            param2 = Math.floor(param2);
+            var result = 0;
+            if (op == '+') {
+                result = param1 + param2;
+                result = result / 100;
+                return result;
+            }
+            if (op == '-') {
+                result = param1 - param2;
+                result = result / 100;
+                return result;
+            }
+            if (op == '!=') {
+                if (param1 != param2)
+                    return true;
+                else
+                    return false;
+            }
+            if (op == '==') {
+                if (param1 == param2)
+                    return true;
+                else
+                    return false;
+            }
+            if (op == '>') {
+                if (param1 > param2)
+                    return true;
+                else
+                    return false;
+            }
+            if (op == '<') {
+                if (param1 < param2)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        /* Calculating Dr and Cr total */
+        $('.dr-item').on('change', function () {
+            var drTotal = 0;
+            $(".dr-item").each(function () {
+                var curDr = $(this).val();
+                curDr = parseFloat(curDr);
+                if (isNaN(curDr))
+                    curDr = 0;
+                drTotal = jsFloatOps(drTotal, curDr, '+');
+            });
+            $("table tr #dr-total").text(drTotal);
+            var crTotal = 0;
+            $("table tr .cr-item").each(function () {
+                var curCr = $(this).val();
+                curCr = parseFloat(curCr);
+                if (isNaN(curCr))
+                    curCr = 0;
+                crTotal = jsFloatOps(crTotal, curCr, '+');
+            });
+            $("table tr #cr-total").text(crTotal);
+
+            if (jsFloatOps(drTotal, crTotal, '==')) {
+                $("table tr #dr-total").css("background-color", "#FFFF99");
+                $("table tr #cr-total").css("background-color", "#FFFF99");
+                $("table tr #dr-diff").text("-");
+                $("table tr #cr-diff").text("");
+            } else {
+                $("table tr #dr-total").css("background-color", "#FFE9E8");
+                $("table tr #cr-total").css("background-color", "#FFE9E8");
+                if (jsFloatOps(drTotal, crTotal, '>')) {
+                    $("table tr #dr-diff").text("");
+                    $("table tr #cr-diff").text(jsFloatOps(drTotal, crTotal, '-'));
+                } else {
+                    $("table tr #dr-diff").text(jsFloatOps(crTotal, drTotal, '-'));
+                    $("table tr #cr-diff").text("");
+                }
+            }
+
+        });
+
+        $('.cr-item').on('change', function () {
+            var drTotal = 0;
+            $("table tr .dr-item").each(function () {
+                var curDr = $(this).val();
+                curDr = parseFloat(curDr);
+                if (isNaN(curDr))
+                    curDr = 0;
+                drTotal = jsFloatOps(drTotal, curDr, '+');
+            });
+            $("table tr #dr-total").text(drTotal);
+            var crTotal = 0;
+            $("table tr .cr-item").each(function () {
+                var curCr = $(this).val();
+                curCr = parseFloat(curCr);
+                if (isNaN(curCr))
+                    curCr = 0;
+                crTotal = jsFloatOps(crTotal, curCr, '+');
+            });
+            $("table tr #cr-total").text(crTotal);
+
+            if (jsFloatOps(drTotal, crTotal, '==')) {
+                $("table tr #dr-total").css("background-color", "#FFFF99");
+                $("table tr #cr-total").css("background-color", "#FFFF99");
+                $("table tr #dr-diff").text("-");
+                $("table tr #cr-diff").text("");
+            } else {
+                $("table tr #dr-total").css("background-color", "#FFE9E8");
+                $("table tr #cr-total").css("background-color", "#FFE9E8");
+                if (jsFloatOps(drTotal, crTotal, '>')) {
+                    $("table tr #dr-diff").text("");
+                    $("table tr #cr-diff").text(jsFloatOps(drTotal, crTotal, '-'));
+                } else {
+                    $("table tr #dr-diff").text(jsFloatOps(crTotal, drTotal, '-'));
+                    $("table tr #cr-diff").text("");
+                }
+            }
+        });
+
+        /* Dr - Cr dropdown changed */
+        $('.dc-dropdown').on('change', function () {
+            var drValue = $(this).parent().next().next().children().val();
+            var crValue = $(this).parent().next().next().next().children().val();
+
+            if ($(this).parent().next().children().val() == "") {
+                return;
+            }
+
+            drValue = parseFloat(drValue);
+            if (isNaN(drValue))
+                drValue = 0;
+
+            crValue = parseFloat(crValue);
+            if (isNaN(crValue))
+                crValue = 0;
+
+            if ($(this).val() == "D") {
+                if (drValue == 0 && crValue != 0) {
+                    $(this).parent().next().next().children().val(crValue);
+                }
+                $(this).parent().next().next().next().children().val("");
+                $(this).parent().next().next().next().children().attr('disabled', 'disabled');
+                $(this).parent().next().next().children().removeAttr('disabled');
+            } else {
+                if (crValue == 0 && drValue != 0) {
+                    $(this).parent().next().next().next().children().val(drValue);
+                }
+                $(this).parent().next().next().children().val("");
+                $(this).parent().next().next().children().attr('disabled', 'disabled');
+                $(this).parent().next().next().next().children().removeAttr('disabled');
+            }
+            /* Recalculate Total */
+            $('.dr-item:first').trigger('change');
+            $('.cr-item:first').trigger('change');
+        });
+
+        /* Ledger dropdown changed */
+        $('.ledger-dropdown').on('change', function () {
+            if ($(this).val() == "") {
+                $(this).parent().next().children().val("");
+                $(this).parent().next().next().children().val("");
+                $(this).parent().next().children().attr('disabled', 'disabled');
+                $(this).parent().next().next().children().attr('disabled', 'disabled');
+            } else {
+                $(this).parent().next().children().removeAttr('disabled');
+                $(this).parent().next().next().children().removeAttr('disabled');
+                $(this).parent().prev().children().trigger('change');
+            }
+            $(this).parent().next().children().trigger('change');
+            $(this).parent().next().next().children().trigger('change');
+
+            var ledgerid = $(this).val();
+            var rowid = $(this);
+            if (ledgerid > 0) {
+                $.ajax({
+                    url: "../balance/" + ledgerid,
+                    success: function (data) {
+                        var ledger_bal = parseFloat(data);
+                        if (isNaN(ledger_bal))
+                            ledger_bal = 0;
+                        if (jsFloatOps(ledger_bal, 0, '=='))
+                            rowid.parent().next().next().next().next().next().children().text("0");
+                        else if (jsFloatOps(ledger_bal, 0, '<'))
+                            rowid.parent().next().next().next().next().next().children().text("Cr " + -data);
+                        else
+                            rowid.parent().next().next().next().next().next().children().text("Dr " + data);
+                    }
+                });
+            } else {
+                rowid.parent().next().next().next().next().next().children().text("");
+            }
+        });
+
+        /* Recalculate Total */
+        $('table td .recalculate').click(function () {
+            /* Recalculate Total */
+            $('.dr-item:first').trigger('change');
+            $('.cr-item:first').trigger('change');
+        });
+
+        /* Delete ledger row */
+        $('table td .deleterow').click(function () {
+            $(this).parent().parent().remove();
+            /* Recalculate Total */
+            $('.dr-item:first').trigger('change');
+            $('.cr-item:first').trigger('change');
+        });
+
+        function getAbsolutePath() {
+            var loc = window.location;
+            var pathName = loc.pathname.substr(loc.pathname.lastIndexOf('/') + 1);
+            return pathName;
+            //return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+        }
+
+        /* Add ledger row */
+        $('.addrow').on('click', function () {
+            //alert(getAbsolutePath());
+            var cur_obj = this;
+            var add_image_url = $(cur_obj).attr('src');
+
+            $(cur_obj).attr('src', '../Images/Icons/ajax.gif');
+            $.ajax({
+                url: "../addrow/" + getAbsolutePath(),
+                success: function (data) {
+                    $(cur_obj).parent().parent().after(data);
+                    $(cur_obj).attr('src', add_image_url);
+                }
+            });
+        });
+
+
+        /* On page load initiate all triggers */
+        $('.dc-dropdown').trigger('change');
+        $('.ledger-dropdown').trigger('change');
+        $('.dr-item:first').trigger('change');
+        $('.cr-item:first').trigger('change');
+    });
+
+</script>
+
+
+
+<ul class="breadcrumb">
+    <li class="active">Add New Payment</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@*@ViewBag.Message*@ @TempData["Info"] @ViewBag.Message 
+        </div>
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-plus"></i> New Payment Entry</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+
+
+
+                        <form class="form-horizontal" method="post">
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <hr />
+                                <table>
+                                    <tr>
+                                        <td>
+                                            @Html.Label("entry_number", "Entry Number: ")
+                                        </td>
+                                        <td>
+                                            @Html.Editor("entry_number")
+                                        </td>
+                                        <td style="padding-left:25px">
+                                            @Html.Label("entry_date", "Entry Date: ")
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("entry_date", "12/13/2014")
+                                        </td>
+                                    </tr>
+                                </table>
+                                <hr />
+                                @Html.ValidationSummary(true)
+
+
+                                <br />
+                                <table class="entry-table table @*table-striped*@" style="width:60%">
+                                    <thead><tr><th>Type</th><th>Ledger Account</th><th>Dr Amount</th><th>Cr Amount</th><th colspan=2></th><th colspan=2>Cur Balance</th></tr></thead>
+
+
+                               @if (Model != null && Model.Count > 0)
+                                    {
+                                        int j = 0;
+                                        for (j= 0; j < 3; j++)
+                                        {
+                                            
+                                            
+                                            @*<tr style="border:1px solid black">*@
+
+                                            <tr>
+                                                <td>
+                                                    <select class="dc-dropdown" name="ledger_dc" id="ledger_dc">
+                                                        <option value="D">Dr</option>
+                                                        <option value="C">Cr</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    @*@Html.DropDownListFor(model => model[j], (SelectList)ViewBag.Ledgers, string.Empty, new { @class = "ledger-dropdown" })*@
+                                                    @Html.DropDownList("Ledgers", null, String.Empty, new { @class = "ledger-dropdown" })
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="DrAmount" class="dr-item" maxlength="15" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="CrAmount" class="cr-item" maxlength="15" />
+                                                </td>
+                                                <td>
+                                                    <span id="add" class="addrow" title="Add Row">
+                                                        <img src="~/Images/Icons/add.png">
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span id="delete" class="deleterow" title="Delete Row">
+                                                        <img src="~/Images/Icons/delete.png">
+                                                    </span>
+
+                                                </td>
+                                                <td class="ledger-balance"><div></div></td>
+                                            </tr>                                    
+                                            j++;
+                                    
+                                    
+                                       } 
+                                  
+                                  }
+                                            
+
+
+
+                                    <tr><td colspan="7"></td></tr>
+                                    <tr id="entry-total"><td colspan=2><strong>Total</strong></td><td id="dr-total">0</td><td id="cr-total">0</td><td><span class="recalculate" title="Recalculate Total"><img src="~/Images/Icons/gear.png"></span></td><td></td><td></td></tr>
+
+                                    <tr id="entry-difference"><td colspan=2><strong>Difference</strong></td><td id="dr-diff"></td><td id="cr-diff"></td><td></td><td></td><td></td></tr>
+
+
+                                </table>
+                                <label for="NarrationTxt">Narration</label>
+                                <textarea name="NarrationTxt" id="NarrationTxt" rows="2" style="width:20%"></textarea>
+                                <hr />
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                    </div>
+                                    <input type="submit" value="Create" />
+
+
+
+
+
+
+
+
+
+                                    @*<div class="form-group">
+                @Html.LabelFor(model => model.tag_id, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tag_id, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.tag_id)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.entry_type, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.entry_type)
+                    @Html.ValidationMessageFor(model => model.entry_type)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.number, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.number)
+                    @Html.ValidationMessageFor(model => model.number)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.date, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.date)
+                    @Html.ValidationMessageFor(model => model.date)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.dr_total, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.dr_total)
+                    @Html.ValidationMessageFor(model => model.dr_total)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cr_total, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cr_total)
+                    @Html.ValidationMessageFor(model => model.cr_total)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.narration, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.narration)
+                    @Html.ValidationMessageFor(model => model.narration)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>*@
+                                </div>
+                        </form>
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+@*
+
+
+    @model IEnumerable<jQuery_CRUD.DAL.User>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            var url = "";
+            $("#dialog-alert").dialog({
+                autoOpen: false,
+                resizable: false,
+                height: 170,
+                width: 350,
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                open: function (event, ui) {
+                    $(".ui-dialog-titlebar-close").hide();
+                },
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            if ('@TempData["msg"]' != "") {
+                $("#dialog-alert").dialog('open');
+            }
+
+            $("#dialog-edit").dialog({
+                title: 'Create User',
+                autoOpen: false,
+                resizable: false,
+                width: 400,
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                open: function (event, ui) {
+                    $(".ui-dialog-titlebar-close").hide();
+                    $(this).load(url);
+                }
+            });
+
+            $("#dialog-confirm").dialog({
+                autoOpen: false,
+                resizable: false,
+                height: 170,
+                width: 350,
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                open: function (event, ui) {
+                    $(".ui-dialog-titlebar-close").hide();
+
+                },
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                        window.location.href = url;
+                    },
+                    "Cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#dialog-detail").dialog({
+                title: 'View User',
+                autoOpen: false,
+                resizable: false,
+                width: 400,
+                show: { effect: 'drop', direction: "up" },
+                modal: true,
+                draggable: true,
+                open: function (event, ui) {
+                    $(".ui-dialog-titlebar-close").hide();
+                    $(this).load(url);
+                },
+                buttons: {
+                    "Close": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#lnkCreate").live("click", function (e) {
+                //e.preventDefault(); //use this or return false
+                url = $(this).attr('href');
+                $("#dialog-edit").dialog('open');
+
+                return false;
+            });
+
+            $(".lnkEdit").live("click", function (e) {
+                // e.preventDefault(); use this or return false
+                url = $(this).attr('href');
+                $(".ui-dialog-title").html("Update User");
+                $("#dialog-edit").dialog('open');
+
+                return false;
+            });
+
+            $(".lnkDelete").live("click", function (e) {
+                // e.preventDefault(); use this or return false
+                url = $(this).attr('href');
+                $("#dialog-confirm").dialog('open');
+
+                return false;
+            });
+
+            $(".lnkDetail").live("click", function (e) {
+                // e.preventDefault(); use this or return false
+                url = $(this).attr('href');
+                $("#dialog-detail").dialog('open');
+
+                return false;
+            });
+
+            $("#btncancel").live("click", function (e) {
+                $("#dialog-edit").dialog("close");
+                return false;
+            });
+        });
+    </script>
+    <div id="dialog-alert" style="display: none">
+        <p>
+            @TempData["msg"]!
+        </p>
+    </div>
+
+    <div id="dialog-confirm" style="display: none">
+        <p>
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            Are you sure to delete?
+        </p>
+    </div>
+
+    <div id="dialog-edit" style="display: none">
+    </div>
+    <div id="dialog-detail" style="display: none">
+    </div>
+
+    <h2>Users List</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { id = "lnkCreate" })
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "lnkEdit" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "lnkDetail" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "lnkDelete" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+*@
+
+
+

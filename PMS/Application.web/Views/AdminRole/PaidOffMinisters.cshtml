@@ -1,0 +1,205 @@
+﻿@model IEnumerable<Application.Web.Models.MinisterProfile>
+
+
+@using GridMvc.Html;
+ 
+@{
+    ViewBag.Title = "Paid Off Ministers Ministers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "AdminRole")
+        <span class="divider">/</span></li>
+    <li>@Html.ActionLink("Manage Minister", "ManageMinister", "AdminRole")
+        <span class="divider">/</span></li>
+    <li class="active">Paid Off Ministers</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+0            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+        <form method="post" action="AssignChequeNumber">
+
+            <br />
+            <div class="row-fluid sortable ui-sortable">
+                <div class="box span12">
+
+                    <div class="box-header well" data-original-title="Manage Ministers"
+                         style="">
+                        <h2><i class="fa fa-list-alt"></i> Paid Off Ministers</h2>
+                        <span class="label label-warning" style="float: right; margin-top: 4px;">+@Model.Count()</span>
+                    </div>
+                    <div class="box-content">
+                        <div class="row-fluid">                            @Html.Grid(Model).Columns(columns =>
+                       {
+                           columns.Add(c => c.Surname).Titled("Surname").Css("code-bold");
+                           columns.Add(c => c.OtherName).Titled("Other Names");
+                           columns.Add(c => c.nCheque).Titled("Cheque Number");
+                           columns.Add(c => c.ExitReason).Titled("Exit Reason");
+                           columns.Add(c => c.RetiredDate).Titled("Retired date");
+                           columns.Add(c => c.YearsServed).Titled("Years Served");
+
+                       })
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @section Styles { @Styles.Render("~/Content/datatablecss")   }
+
+
+    @section Scripts {
+
+        @Scripts.Render("~/bundles/jquerydatatable")
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                var tommy = {
+                    name: "Tommy",
+                    birthday: new Date(1921, 0, 1),
+                    hobbies: ["Pinball", "Holiday camp"]
+                };
+
+
+                var table = $('.grid-table').DataTable();
+
+
+                $('#Selectall').click(function (event) { //on click
+
+                    if (this.checked) { // check select status
+                        $('#selc').html('Unselect All');
+                                $('.selectbx').each(function () { //loop through each checkbox
+                                    this.checked = true;  //select all checkboxes with class "checkbox1"  
+                                });
+                                $('.grid-table tr').each(function () {
+                                    if ($(this).hasClass('selected')) {
+                                        return null;
+                                    }
+                                    else
+                                    {
+                                        $(this).toggleClass('selected');
+                                    }
+                                });
+                    } else {
+                        $('#selc').html('Select All');
+                                $('.selectbx').each(function () { //loop through each checkbox
+                                    this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+                                });
+
+                                $('.grid-table tr').each(function () {
+                                    if ($(this).hasClass('selected')) {
+
+                                        $(this).toggleClass('selected');
+                                    }
+                                    else {
+
+                                        return null;
+                                    }
+                                });
+                            }
+                            //$('.counts').html(table.rows.closest(':checkbox').checked.data().length + ' Selected');
+                            $('.counts').html(table.rows('.selected').data().length + ' Selected');
+                });
+
+
+                //////////////CheckBox Events Begins
+
+            $('.grid-table').on('click', 'tr', function () {
+                //$(this).toggleClass('selected');
+
+
+                if (event.target.type !== 'checkbox') {
+                    $(':checkbox', this).trigger('click');
+                    $('.counts').html(table.rows('.selected').data().length + ' Selected');
+                }
+            });
+
+            $("input[type='checkbox']").change(function (e) {
+                if ($(this).is(":checked")) {
+                    $(this).closest('tr').addClass("selected");
+                    $('.counts').html(table.rows('.selected').data().length + ' Selected');
+                } else {
+                    $(this).closest('tr').removeClass("selected");
+                    $('.counts').html(table.rows('.selected').data().length + ' Selected');
+                }
+            });
+
+
+                //////////////CheckBox Events Ends
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            $('#AssignCheckno').click(function () {
+                alert(table.rows('.selected').data().length + ' row(s) selected');
+
+                @*$.ajax({
+                    url: "@Url.Action("AssignCheckNumber", "AdminRole")",
+                    type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ person: tommy }),
+                success: function(response) {
+                    response ? alert("It worked!") : alert("It didn't work.");
+                }
+            });*@
+
+
+                getValueUsingClass();
+            });
+
+
+
+
+
+
+
+
+
+                function getValueUsingClass() {
+                    /* declare an checkbox array */
+                    var chkArray = [];
+
+                    /* look for all checkboes that have a class 'chk' attached to it and check if it was checked */
+                    $(".selectbx:checked").each(function () {
+                        chkArray.push($(this).val());
+                    });
+
+                    /* we join the array separated by the comma */
+                    var selected;
+                    selected = chkArray.join(',') + ",";
+
+                    /* check if there is selected checkboxes, by default the length is 1 as it contains one single comma */
+                    if (selected.length > 1) {
+                        alert("You have selected " + selected);
+                        $("#done").click();
+                        window.location('AssignCheckNumber');
+                    } else {
+                        alert("Please at least one of the checkbox");
+                    }
+                }
+
+            
+            });
+
+        </script>
+    }

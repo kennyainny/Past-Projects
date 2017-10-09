@@ -1,0 +1,42 @@
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.dll
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Documents\Visual Studio 2010\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2012\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Documents\Visual Studio 2012\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2012\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.dll
+C:\Users\Gabriel\Documents\Visual Studio 2012\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2012\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel\Documents\Visual Studio 2012\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Documents\Visual Studio 2012\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2013\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Documents\Visual Studio 2013\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2013\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.dll
+C:\Users\Gabriel\Documents\Visual Studio 2013\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.pdb
+C:\Users\Gabriel\Documents\Visual Studio 2013\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel\Documents\Visual Studio 2013\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Documents\Visual Studio 2013\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.dll
+C:\Users\Gabriel\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.pdb
+C:\Users\Gabriel\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.pdb
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.dll
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.pdb
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.dll
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.pdb
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.dll
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\FI.Library.Smartcard\bin\Debug\FI.Library.Smartcard.pdb
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.dll
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\FI.Library.Smartcard\bin\Debug\FI.Library.Encoding.pdb
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.csprojResolveAssemblyReference.cache
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.dll
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\FI.Library.Smartcard\obj\Debug\FI.Library.Smartcard.pdb

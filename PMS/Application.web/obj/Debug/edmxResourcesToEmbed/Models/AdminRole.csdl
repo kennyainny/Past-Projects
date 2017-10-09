@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdminRoleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccountRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="MinisterId" Type="Int32" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MinisterCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Debit" Type="Double" Nullable="false" />
+    <Property Name="Minister" Type="Double" Nullable="false" />
+    <Property Name="Church" Type="Double" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="NetBal" Type="Double" Nullable="false" />
+    <Property Name="Month" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MonthId" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="ContributionCheckListTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="MinisterId" Type="Int32" Nullable="false" />
+    <Property Name="DistrictName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MinisterCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MinisterName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChurchContribution" Type="Double" Nullable="false" />
+    <Property Name="MinisterContribution" Type="Double" Nullable="false" />
+    <Property Name="ServiceContribution" Type="Double" Nullable="false" />
+    <Property Name="TotalContribution" Type="Double" Nullable="false" />
+    <Property Name="NetContribution" Type="Double" Nullable="false" />
+    <Property Name="PayMonth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PayYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ContributionScheduleTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="MinisterId" Type="Int32" Nullable="false" />
+    <Property Name="ChurchContribution" Type="Double" Nullable="false" />
+    <Property Name="MinisterContribution" Type="Double" Nullable="false" />
+    <Property Name="TotalContribution" Type="Double" Nullable="false" />
+    <Property Name="ScheduleMonth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ScheduleYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameofActor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ActionDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStamps" Type="DateTime" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="MinisterProfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MinisterCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OtherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="Salary" Type="Double" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Retired" Type="Int32" Nullable="false" />
+    <Property Name="Both" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Stopped" Type="Int32" Nullable="false" />
+    <Property Name="NextOfKin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmployDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="RetiredDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="MergeDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="DateJoined" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="NextRelation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExitReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="nExist" Type="Int32" />
+    <Property Name="nBatch" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="nCheque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="nUserID" Type="Int32" />
+    <Property Name="PhotoString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="YearsServed" Type="Double" />
+    <Property Name="RegNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsPaidOff" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Month">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MonthName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ReconciliationSummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="DistrictCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Remittance" Type="Double" Nullable="false" />
+    <Property Name="Schedule" Type="Double" Nullable="false" />
+    <Property Name="ServiceCharge" Type="Double" Nullable="false" />
+    <Property Name="NetSchedule" Type="Double" Nullable="false" />
+    <Property Name="Debit" Type="Double" Nullable="false" />
+    <Property Name="Credit" Type="Double" Nullable="false" />
+    <Property Name="Balance" Type="Double" Nullable="false" />
+    <Property Name="PayMonth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PayYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DatePosted" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserPosted" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Year">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YearValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="AdminRoleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AccountRecords" EntityType="Self.AccountRecord" />
+    <EntitySet Name="ContributionCheckListTables" EntityType="Self.ContributionCheckListTable" />
+    <EntitySet Name="ContributionScheduleTables" EntityType="Self.ContributionScheduleTable" />
+    <EntitySet Name="Districts" EntityType="Self.District" />
+    <EntitySet Name="Histories" EntityType="Self.History" />
+    <EntitySet Name="MinisterProfiles" EntityType="Self.MinisterProfile" />
+    <EntitySet Name="Months" EntityType="Self.Month" />
+    <EntitySet Name="ReconciliationSummaries" EntityType="Self.ReconciliationSummary" />
+    <EntitySet Name="UserModels" EntityType="Self.UserModel" />
+    <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+    <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" />
+    <EntitySet Name="Years" EntityType="Self.Year" />
+  </EntityContainer>
+</Schema>

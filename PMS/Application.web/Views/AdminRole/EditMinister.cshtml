@@ -1,0 +1,217 @@
+﻿@model Application.Web.Models.MinisterProfile
+
+@{
+    ViewBag.Title = " Edit Minister";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "AdminRole")
+        <span class="divider">/</span></li>
+    <li>@Html.ActionLink("Manage Minister", "ManageMinister", "AdminRole")
+        <span class="divider">/</span></li>
+    <li class="active">Edit Minister</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-edit"></i> Edit Minister</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+                        <div class="well form-horizontal span6" style="margin-top: 4px;">
+                            <h5 style="margin: 3px;">Modify Minister Details </h5>
+                            <hr style="margin: 3px;" />
+
+                            @using (@Html.BeginForm("EditMinister", "AdminRole",
+                                    FormMethod.Get, new { id = "DistrictForm", style = "margin-top: 7px;" }))
+                            //BeginForm("Index", "Home", FormMethod.Post, new { id = "TheForm" })){%>
+                            {
+                                  <div class="control-group">
+                                    <label class="control-label">District: </label>
+                                    <div class="controls">
+                                        @Html.DropDownList("SelectedDistrictId",
+                                        (SelectList)TempData["DistrictSelectList"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 0px; width: 250px;",
+                                            onchange = "document.getElementById('DistrictForm').submit();"
+                                        })
+                                    </div>
+                                </div>
+                            }
+                            
+                            @using (Html.BeginForm("EditMinister", "AdminRole",
+                                        FormMethod.Post, new { id = "SubmitMinisterForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+    
+                                @Html.ValidationSummary(false) 
+
+                                @Html.HiddenFor(model => model.Id)                                
+                                @Html.HiddenFor(model => model.DistrictId, new { @Value = @ViewBag.DistrictId })
+                                
+                                @Html.HiddenFor(model => model.ExitReason)
+                                @Html.HiddenFor(model => model.Retired)
+                                @Html.HiddenFor(model => model.Both)
+                                @Html.HiddenFor(model => model.Stopped)
+                                @Html.HiddenFor(model => model.RetiredDate)
+                                @Html.HiddenFor(model => model.MergeDate)                                
+                                @Html.HiddenFor(model => model.nExist)
+                                @Html.HiddenFor(model => model.nBatch)
+                                @Html.HiddenFor(model => model.nCheque)
+                                @Html.HiddenFor(model => model.nUserID)
+                                @Html.HiddenFor(model => model.PhotoString)
+                                                                                                                                
+                                <div class="control-group" style="margin-top: 15px;">
+                                    <label class="control-label">Minister Code:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.MinisterCode)
+                                        @Html.ValidationMessageFor(model => model.MinisterCode)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Surname:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Surname)
+                                        @Html.ValidationMessageFor(model => model.Surname)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Other Names:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.OtherName)
+                                        @Html.ValidationMessageFor(model => model.OtherName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Permanent Address:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.PermanentAddress)
+                                        @Html.ValidationMessageFor(model => model.PermanentAddress)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Salary:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.Salary)
+                                        @Html.ValidationMessageFor(model => model.Salary)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Next of Kin:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.NextOfKin)
+                                        @Html.ValidationMessageFor(model => model.NextOfKin)
+                                    </div>
+                                </div>                                
+                                
+                                <div class="control-group">
+                                    <label class="control-label">Next Relation:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.NextRelation)
+                                        @Html.ValidationMessageFor(model => model.NextRelation)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Years Served:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.YearsServed)
+                                        @Html.ValidationMessageFor(model => model.YearsServed)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Reg Number:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.RegNumber)
+                                        @Html.ValidationMessageFor(model => model.RegNumber)
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label">Date of Birth:</label>
+                                    <div class="controls">                                        
+                                        @Html.TextBoxFor(model => model.DateOfBirth,
+                                            new { @class = "datefield", type = "text" })
+                                        @Html.ValidationMessageFor(model => model.DateOfBirth)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Employ Date:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.EmployDate,
+                                            new { @class = "datefield", type = "text" })
+                                        @Html.ValidationMessageFor(model => model.EmployDate)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Date Joined:</label>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(model => model.DateJoined,
+                                            new { @class = "datefield", type = "text" })
+                                        @Html.ValidationMessageFor(model => model.DateJoined)
+                                    </div>
+                                </div>                                
+                               
+                                <div class="form-actions" style="margin-bottom: 0px;">
+                                    <button class="btn btn-primary" title="Update record" type="submit">Update</button>
+                                    <button class="btn btn-default" title="Go to previous page" type="button"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Cancel</button>
+                                    @*onclick="location.href='@Url.Action("ContributionSchedule")'">Cancel</button>*@
+                                    @*@Session["ReturnUrl"]
+                                </div>*@
+                                </div>    
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+ @Scripts.Render("~/bundles/jqueryval")
+ <script type="text/javascript">
+
+     $(function () {
+         $.validator.addMethod('date',
+             function (value, element) {
+                 if (this.optional(element)) {
+                     return true;
+                 }
+                 var valid = true;
+                 try {
+                     $.datepicker.parseDate('dd/mm/yy', value);
+                 }
+                 catch (err) {
+                     valid = false;
+                 }
+                 return valid;
+             });
+
+         $(".datefield").datepicker({ dateFormat: 'dd/mm/yy' });
+     })
+
+     //if (!Modernizr.inputtypes.date) {
+     //    $(function () {
+     //        $("input[type='date']")
+     //                    .datepicker()
+     //                    .get(0)
+     //                    .setAttribute("type", "text");
+     //    })
+     //}
+
+</script>
+}
+

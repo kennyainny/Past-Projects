@@ -1,0 +1,13 @@
+c:\users\kelechi\documents\visual studio 2012\Projects\HandyManClient\HandyManClient\bin\Debug\HandyManClient.exe.config
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\bin\Debug\HandyManClient.exe
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\bin\Debug\HandyManClient.pdb
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\obj\Debug\HandyManClient.exe
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\obj\Debug\HandyManClient.pdb
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\HandyManClient\HandyManClient\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Kelechi\documents\visual studio 2012\Projects\HandyManClient\HandyManClient\obj\Debug\HandyManClient.csprojResolveAssemblyReference.cache
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\HandyManClient\HandyManClient\bin\Debug\HandyManClient.exe.config
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\HandyManClient\HandyManClient\obj\Debug\HandyManClient.exe
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\HandyManClient\HandyManClient\obj\Debug\HandyManClient.pdb

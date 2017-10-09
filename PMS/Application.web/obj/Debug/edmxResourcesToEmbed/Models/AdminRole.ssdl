@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdminRoleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccountRecords">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="MinisterId" Type="int" Nullable="false" />
+    <Property Name="District" Type="nvarchar(max)" />
+    <Property Name="MinisterCode" Type="nvarchar(max)" />
+    <Property Name="FullName" Type="nvarchar(max)" />
+    <Property Name="AccountNo" Type="nvarchar(max)" />
+    <Property Name="Debit" Type="float" Nullable="false" />
+    <Property Name="Minister" Type="float" Nullable="false" />
+    <Property Name="Church" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="NetBal" Type="float" Nullable="false" />
+    <Property Name="Month" Type="nvarchar(max)" />
+    <Property Name="MonthId" Type="int" Nullable="false" />
+    <Property Name="Year" Type="nvarchar(max)" />
+    <Property Name="PostDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContributionCheckListTables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="MinisterId" Type="int" Nullable="false" />
+    <Property Name="DistrictName" Type="nvarchar(max)" />
+    <Property Name="MinisterCode" Type="nvarchar(max)" />
+    <Property Name="MinisterName" Type="nvarchar(max)" />
+    <Property Name="ChurchContribution" Type="float" Nullable="false" />
+    <Property Name="MinisterContribution" Type="float" Nullable="false" />
+    <Property Name="ServiceContribution" Type="float" Nullable="false" />
+    <Property Name="TotalContribution" Type="float" Nullable="false" />
+    <Property Name="NetContribution" Type="float" Nullable="false" />
+    <Property Name="PayMonth" Type="nvarchar(max)" />
+    <Property Name="PayYear" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ContributionScheduleTables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="MinisterId" Type="int" Nullable="false" />
+    <Property Name="ChurchContribution" Type="float" Nullable="false" />
+    <Property Name="MinisterContribution" Type="float" Nullable="false" />
+    <Property Name="TotalContribution" Type="float" Nullable="false" />
+    <Property Name="ScheduleMonth" Type="nvarchar(max)" />
+    <Property Name="ScheduleYear" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Districts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictCode" Type="nvarchar(max)" />
+    <Property Name="DistrictName" Type="nvarchar(max)" />
+    <Property Name="Address1" Type="nvarchar(max)" />
+    <Property Name="City" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="PhoneNo" Type="nvarchar(max)" />
+    <Property Name="Fax" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Contact" Type="nvarchar(max)" />
+    <Property Name="Manager" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Histories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameofActor" Type="nvarchar(max)" />
+    <Property Name="Role" Type="nvarchar(max)" />
+    <Property Name="ActionDetail" Type="nvarchar(max)" />
+    <Property Name="TimeStamps" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MinisterProfiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MinisterCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OtherName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="Salary" Type="float" />
+    <Property Name="DateOfBirth" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Retired" Type="int" Nullable="false" />
+    <Property Name="Both" Type="nvarchar(max)" />
+    <Property Name="Stopped" Type="int" Nullable="false" />
+    <Property Name="NextOfKin" Type="nvarchar(max)" />
+    <Property Name="EmployDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="RetiredDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="MergeDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="DateJoined" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="NextRelation" Type="nvarchar(max)" />
+    <Property Name="ExitReason" Type="nvarchar(max)" />
+    <Property Name="nExist" Type="int" />
+    <Property Name="nBatch" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="nCheque" Type="nvarchar(max)" />
+    <Property Name="nUserID" Type="int" />
+    <Property Name="PhotoString" Type="nvarchar(max)" />
+    <Property Name="YearsServed" Type="float" />
+    <Property Name="RegNumber" Type="nvarchar(max)" />
+    <Property Name="PermanentAddress" Type="nvarchar(max)" />
+    <Property Name="IsPaidOff" Type="bit" />
+  </EntityType>
+  <EntityType Name="Months">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MonthName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ReconciliationSummaries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="DistrictCode" Type="nvarchar(max)" />
+    <Property Name="DistrictName" Type="nvarchar(max)" />
+    <Property Name="Remittance" Type="float" Nullable="false" />
+    <Property Name="Schedule" Type="float" Nullable="false" />
+    <Property Name="ServiceCharge" Type="float" Nullable="false" />
+    <Property Name="NetSchedule" Type="float" Nullable="false" />
+    <Property Name="Debit" Type="float" Nullable="false" />
+    <Property Name="Credit" Type="float" Nullable="false" />
+    <Property Name="Balance" Type="float" Nullable="false" />
+    <Property Name="PayMonth" Type="nvarchar(max)" />
+    <Property Name="PayYear" Type="nvarchar(max)" />
+    <Property Name="DatePosted" Type="nvarchar(max)" />
+    <Property Name="UserPosted" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserModels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="UserRole" Type="nvarchar(max)" />
+    <Property Name="LastLogin" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProviderUserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Years">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YearValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="AdminRoleModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountRecords" EntityType="Self.AccountRecords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContributionCheckListTables" EntityType="Self.ContributionCheckListTables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContributionScheduleTables" EntityType="Self.ContributionScheduleTables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Histories" EntityType="Self.Histories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MinisterProfiles" EntityType="Self.MinisterProfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Months" EntityType="Self.Months" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReconciliationSummaries" EntityType="Self.ReconciliationSummaries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserModels" EntityType="Self.UserModels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Years" EntityType="Self.Years" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

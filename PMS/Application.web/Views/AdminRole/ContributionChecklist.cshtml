@@ -1,0 +1,156 @@
+﻿@model IEnumerable<Application.Web.Models.ContributionCheckListTable>
+
+@using GridMvc.Html;
+
+@{
+    ViewBag.Title = "Contribution Schedule";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Session["ReturnUrl"] = Request.Url;
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index")<span class="divider">/</span></li>
+    <li class="active">Contributions Checklist</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contributions Checklist">
+                    <h2><i class="icon-list-alt"></i> Contributions Checklist </h2></div>
+                
+                <div class="box-content">
+                    <div class="row-fluid">
+                                                
+                        @if (@ViewBag.IsEmpty)
+                        {
+                           
+                        }
+                        else
+                        {
+                             <button class="btn btn-success" title="Export as PDF"
+                            onclick="location.href='@Url.Action("ChecklistReport")'">
+                            <i class="fa fa-print"></i> Export & Print </button>
+                            
+                            <a class="btn btn-warning" title="Post to Reconciliation Summary"
+                                 href="@Url.Action("PostChecklist")"
+    onclick = "return confirm('Are you sure you want to post Checklist?\nOnce posted, it cannot be modified again!');">
+                            <i class="fa fa-send-o"></i> Post Checklist</a>                                          
+                                                
+                        @*<button class="btn btn-warning" title="Post to Reconciliation Summary" 
+                            onclick = "return confirm('Are you sure you wish to delete this entry?');"
+                            href="@Url.Action("PostChecklist")">*@
+                            @*onclick="location.href='@Url.Action("PostChecklist")'">*@
+                            @*<i class="fa fa-send-o"></i> Post Checklist</button>*@
+                        }
+                        <fieldset class="section" style="margin-top: 10px">
+
+                            <legend>Set Values: </legend>
+
+                                @using (@Html.BeginForm("ContributionChecklist", "AdminRole",
+                                    FormMethod.Get, new { id = "ContributionChecklistForm" }))
+                                {                        
+                                        <div class="control-group" style="margin-bottom: 5px; margin-top: 0px;">
+                                            <label class="control-label label">District:</label>
+                                            @Html.DropDownList("SelectedDistrictID",
+                                        (SelectList)TempData["SelectDistrictDDL"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 25px;",
+                                            onchange = "document.getElementById('ContributionChecklistForm').submit();"
+                                        })
+                                        </div>
+                                    <div class="control-group" style="margin-right: 30px; float: right; margin-top: 0px;"> 
+                                        <label class="control-label label">Year:</label>                                      
+                                        @Html.DropDownList("YearID",
+                                            (SelectList)TempData["SelectYearDDL"], new
+                                            {
+                                                @class = "controls label-default",
+                                                style = "margin-left: 19px; width: 100px;",
+                                                onchange = "document.getElementById('ContributionChecklistForm').submit();"
+                                            })                                       
+                                    </div>
+                                    <div class="control-group" style="margin-right: 30px; float: right; margin-top: 0px;">
+                                        <label class="control-label label">Month:</label>
+                                           @Html.DropDownList("MonthID",
+                            (SelectList)TempData["SelectMonthDDL"], new
+                            {
+                                @class = "controls label-default",
+                                style = "margin-left: 5px; width: 100px;",
+                                onchange = "document.getElementById('ContributionChecklistForm').submit();"
+                            })                                        
+                                    </div>                                
+                                }                            
+                        </fieldset>
+
+                        <div id="load-temp-table">
+
+                             @if (@ViewBag.IsEmpty)
+                             {
+                            <div style="margin: 30px;">
+                                No Schedule has been posted yet!
+                                 <br />
+                                Please select go to Contribution Schedule and post for last month.
+                            </div>  
+                            <div class="form-actions" style="margin-bottom: 0px;">                                    
+                                    <button class="btn btn-primary" title="Go to previous page" type="button"
+                                        style=" margin-left: 150px;"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Back</button>
+                                </div>                             
+                             }
+                             else
+                             {
+
+                            @Html.Grid(Model).Columns(columns =>
+                       {
+                           //columns.Add(c => c.ser).Titled("S/N");
+                           columns.Add(c => c.MinisterCode).Titled("Code").Css("code-bold"); //.Filterable(true)
+                           columns.Add(c => c.MinisterName).Titled("Minister's Name"); //.Filterable(true);
+                           columns.Add(c => c.ChurchContribution).Titled("Church");
+                           columns.Add(c => c.MinisterContribution).Titled("Minister");
+                           columns.Add(c => c.ServiceContribution).Titled("Service");
+                           columns.Add(c => c.TotalContribution).Titled("Total Contr");
+                           columns.Add(c => c.NetContribution).Titled("Net Contr");
+                           columns.Add(c => c.PayMonth).Titled("Month");
+                           columns.Add(c => c.PayYear).Titled("Year");
+
+                           columns.Add()
+                               .Titled("Action")
+                                   .Encoded(false)
+                                   .Sanitized(false)
+                                   .RenderValueAs
+                                   (d => @<a class="btn btn-success" href="@Url.Action("EditChecklist", new { id = d.Id })">
+                                           <i class="fa fa-edit icon-white"></i>
+                                       Edit </a>);
+                       }) 
+                             }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Styles { @Styles.Render("~/Content/datatablecss")   }
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquerydatatable")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $('.grid-table').DataTable();
+        });
+    </script>
+}

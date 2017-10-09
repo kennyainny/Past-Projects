@@ -1,0 +1,156 @@
+﻿@model Application.Web.Models.setting
+
+@{
+    ViewBag.Title = "Create New Account";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-plus"></i> Create New Account</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+                        <div class="well form-horizontal span6" style="margin-top: 4px;">
+                            <h5 style="margin: 3px;">Enter Account Details </h5>
+                            <hr style="margin: 3px;" />
+                            
+                            @using (Html.BeginForm("CreateAccount", "AccountRole",
+                                        FormMethod.Post, new { id = "SubmitMinisterForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.ValidationSummary(false)
+
+                                @*<div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.DistrictId,
+                                        new { @Value = @ViewBag.DistrictId })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.Stopped,
+                                        new { @Value = 0 })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.ExitReason,
+                                        new { @Value = "Active" })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.Retired,
+                                        new { @Value = 0 })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.RetiredDate,
+                                        new { @Value = "01/02/1990" })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.MergeDate,
+                                        new { @Value = "01/02/1990" })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.nBatch,
+                                        new { @Value = "01/02/1990" })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.Both,
+                                        new { @Value = "N/A" })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.nExist,
+                                        new { @Value = 0 })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.nCheque,
+                                        new { @Value = "N/A" })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.nUserID,
+                                        new { @Value = 0 })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.PhotoString,
+                                        new { @Value = "N/A" })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.YearsServed,
+                                        new { @Value = 0.0 })
+                                </div>*@
+                                <div class="control-group" style="margin-top: 15px;">
+                                    <label class="control-label">Account Name:</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.name)
+                                        @Html.ValidationMessageFor(model => model.name)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Account Address:</label>
+                                    <div class="controls">                                        
+                                        @Html.EditorFor(model => model.address)
+                                        @Html.ValidationMessageFor(model => model.address)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Account Email:</label>
+                                    <div class="controls">                                        
+                                        @Html.EditorFor(model => model.email)
+                                        @Html.ValidationMessageFor(model => model.email)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Date Format:</label>
+                                    <div class="controls">                                        
+                                        @Html.EditorFor(model => model.date_format)
+                                        @Html.ValidationMessageFor(model => model.date_format)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Financial Year Start:</label>
+                                    <div class="controls">                                        
+                                        @Html.EditorFor(model => model.fy_start)
+                                        @Html.ValidationMessageFor(model => model.fy_start)
+                                        <span style="font-size: 11px; color: red;">Warning : Financial Year Start cannot be changed later.
+                                            Format as per 'Date Foramt' selected abobe.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Financial Year End:</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.fy_end)
+                                        @Html.ValidationMessageFor(model => model.fy_end)
+                                        @*@Html.TextBoxFor(model => model.DateJoined,
+                                            new { @class = "datefield", type = "text" })
+                                        @Html.ValidationMessageFor(model => model.DateJoined)*@
+                                        <span style="font-size: 11px; color:red">
+                                            Warning : Financial Year End cannot be changed later.
+                                            Format as per 'Date Foramt' selected abobe.
+                                            </span>
+</div>
+                                </div>
+                                <div class="form-actions" style="margin-bottom: 0px;">
+                                    <button class="btn btn-primary" title="Update record" type="submit">Create</button>
+                                    <button class="btn btn-default" title="Go to previous page" type="button"
+                                            onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Cancel
+                                    </button>
+                                    @*onclick="location.href='@Url.Action("ContributionSchedule")'">Cancel</button>*@
+                                    @*@Session["ReturnUrl"]
+                                        </div>*@
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

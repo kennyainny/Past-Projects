@@ -1,0 +1,173 @@
+﻿@model  IEnumerable<Application.Web.Models.AccountRecord>
+
+@using GridMvc.Html;
+
+@{
+    ViewBag.Title = " Account Statement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Session["ReturnUrl"] = Request.Url;
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index")<span class="divider">/</span></li>
+    <li class="active"> Minister Account Statement</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-edit"></i> Minister Account Statement</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+                        @if (@ViewBag.IsDiv == "False" && @ViewBag.IsEmpty == "False")
+                        {
+                             <button class="btn btn-warning" title="Export as PDF"
+                            onclick="location.href='@Url.Action("EnterDividend")'">
+                            <i class="icon-edit"></i> Enter Dividend </button>
+                          }
+
+                          @if (@ViewBag.IsEmpty == "False")
+                          {
+                             <button class="btn btn-success" title="Export as PDF"
+                            onclick="location.href='@Url.Action("AccountStatementReport")'">
+                            <i class="fa fa-print"></i> Account Statement (@Model.First().Year) </button>
+                                                        
+                              <button class="btn btn-info" title="Export as PDF"
+                            onclick="location.href='@Url.Action("AccountStatementRange")'">
+                            <i class="fa fa-print"></i> General Account Statement </button>
+                              
+                              <button class="btn btn-warning" title="Export as PDF"
+                            onclick="location.href='@Url.Action("AccountStatementPayoff")'">
+                            <i class="fa fa-print"></i> Pay Off Account Statement </button>
+                              
+                               @* 
+                            <a class="btn btn-warning" title="Enter Opening Balance"
+                                href="@Url.Action("OpeningBalance", new { id = @Model.First().MinisterId })">
+                            <i class="fa fa-edit icon-white"></i> Enter Opening Balance</a>                       
+                        *@
+                          }
+                        <fieldset class="section">
+                            <legend>Set Values: </legend>
+
+                            @using (@Html.BeginForm("AccountStatement", "AdminRole",
+                                    FormMethod.Get, new { id = "DistrictForm" }))
+                            //BeginForm("Index", "Home", FormMethod.Post, new { id = "TheForm" })){%>
+                            {
+                                <div class="well span11">
+                                <div class="control-group span6" style="margin-left: 30px">
+                                    <div class="control-group" style="margin-bottom: 0px;">
+                                        <label class="control-label label">District: </label>
+
+                                        @Html.DropDownList("SelectedDistrictId",
+                                        (SelectList)TempData["DistrictSelectList"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 5px;",
+                                            onchange = "document.getElementById('DistrictForm').submit();"
+                                        })
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label label">Name: </label>
+                                        @Html.DropDownList("SelectedMinisterId",
+                                        (SelectList)TempData["MinisterNameSelectList"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 16px; width: 300px",
+                                            onchange = "document.getElementById('DistrictForm').submit();"
+                                        })
+                                    </div>
+                                </div>                            
+                                <div class="control-group span3" style="float: right; margin-right: 20px;">
+                                    <div class="control-group" style="margin-bottom: 12px; margin-top: 10px;">
+                                        <label class="control-label label">Year:</label>
+                                        
+                                            @Html.DropDownList("SelectedYear",
+                                            (SelectList)TempData["SelectYear"], new
+                                            {
+                                                @class = "controls label-default",
+                                                style = "margin-left: 19px; width: 100px;",
+                                                onchange = "document.getElementById('DistrictForm').submit();"
+                                            })                                        
+                                    </div>                                
+                                </div> 
+                                    </div>   
+                            }
+                        </fieldset>
+
+                        @if (@ViewBag.IsEmpty == "True")
+                        {
+                            <div style="margin: 30px;">                                 
+                                Please select another District, Minister or Year to generate Account Statement.
+                                <br />
+                            </div>  
+                            <div class="form-actions" style="margin-bottom: 0px;">                                    
+                                    <button class="btn btn-primary" title="Go to previous page" type="button"
+                                        style=" margin-left: 150px;"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Back</button>
+                                </div>                             
+                        }
+                        else
+                        {
+                        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Account Statement"
+                    style="">
+                    <h2><i class="fa fa-list-alt"></i> @Model.First().FullName Account Statement</h2>
+                    <span class="label label-warning" style="float: right; margin-top: 4px;">+@Model.Count()</span>                    
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+
+                        @Html.Grid(Model).Columns(columns =>
+                   {
+                       columns.Add(c => c.MonthId).Titled("Code");
+                       columns.Add(c => c.Month).Titled("Month");//.Sortable(false).IsSorted = true;//.Sortable(false);
+                       columns.Add(c => c.Debit).Titled("Debit");
+                       columns.Add(c => c.Minister).Titled("Minister");
+                       columns.Add(c => c.Church).Titled("Church");
+                       columns.Add(c => c.Total).Titled("Total Contribution");
+                       columns.Add(c => c.NetBal).Titled("Net Balance");                           
+                           
+                           @*columns.Add()
+                                   .Encoded(false)
+                                   .Sanitized(false)                               
+                                   .RenderValueAs
+                                   (d => @<a class="btn btn-success" href="@Url.Action("EditDistrict", new { id = d.Id })">
+                                       <i class="fa fa-edit icon-white"></i> Edit </a>);  *@                              
+                           
+                   })                        
+                    </div>
+                </div>
+            </div>
+        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @section Styles { @Styles.Render("~/Content/datatablecss")   }
+    
+    @section Scripts {
+
+        @Scripts.Render("~/bundles/jquerydatatable")
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('.grid-table').DataTable();
+            });
+
+        </script>
+}

@@ -1,0 +1,134 @@
+﻿@model CTracker.Models.Project
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Project</legend>
+
+        @Html.HiddenFor(model => model.ProjectID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OwnerID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OwnerID)
+            @Html.ValidationMessageFor(model => model.OwnerID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Owner)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Owner)
+            @Html.ValidationMessageFor(model => model.Owner)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClientID)
+            @Html.ValidationMessageFor(model => model.ClientID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Client)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Client)
+            @Html.ValidationMessageFor(model => model.Client)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CategoryID)
+            @Html.ValidationMessageFor(model => model.CategoryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Category)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Category)
+            @Html.ValidationMessageFor(model => model.Category)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StatusID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StatusID)
+            @Html.ValidationMessageFor(model => model.StatusID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequirementGatheredDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RequirementGatheredDate)
+            @Html.ValidationMessageFor(model => model.RequirementGatheredDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubmissionDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SubmissionDate)
+            @Html.ValidationMessageFor(model => model.SubmissionDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FinishDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FinishDate)
+            @Html.ValidationMessageFor(model => model.FinishDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Remarks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Remarks)
+            @Html.ValidationMessageFor(model => model.Remarks)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

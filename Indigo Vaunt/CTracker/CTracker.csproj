@@ -1,0 +1,980 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25B261CB-61C2-4706-B5D2-57B112D62CBB}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CTracker</RootNamespace>
+    <AssemblyName>CTracker</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Grid.Mvc.Ajax, Version=1.0.2.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.Ajax.1.0.26\lib\Grid.Mvc.Ajax.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GridMvc, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.Redux.1.0.3\lib\GridMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.40804.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.30506.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.30506.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.30506.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.30506\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ModelsDbContext.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectCategory.cs" />
+    <Compile Include="Models\ProjectClient.cs" />
+    <Compile Include="Models\ProjectOwner.cs" />
+    <Compile Include="Models\ProjectStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\gridmvc.datepicker.css" />
+    <Content Include="Content\gridmvc.datepicker.min.css" />
+    <Content Include="Content\iv.css" />
+    <Content Include="Content\ladda-bootstrap\ladda-themeless.min.css" />
+    <Content Include="Content\morrisjs\examples\area-as-line.html" />
+    <Content Include="Content\morrisjs\examples\area.html" />
+    <Content Include="Content\morrisjs\examples\bar-colors.html" />
+    <Content Include="Content\morrisjs\examples\bar-no-axes.html" />
+    <Content Include="Content\morrisjs\examples\bar.html" />
+    <Content Include="Content\morrisjs\examples\days.html" />
+    <Content Include="Content\morrisjs\examples\decimal-custom-hover.html" />
+    <Content Include="Content\morrisjs\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Content\morrisjs\examples\diagonal-xlabels.html" />
+    <Content Include="Content\morrisjs\examples\donut-colors.html" />
+    <Content Include="Content\morrisjs\examples\donut-formatter.html" />
+    <Content Include="Content\morrisjs\examples\donut.html" />
+    <Content Include="Content\morrisjs\examples\dst.html" />
+    <Content Include="Content\morrisjs\examples\events.html" />
+    <Content Include="Content\morrisjs\examples\goals.html" />
+    <Content Include="Content\morrisjs\examples\lib\example.css" />
+    <Content Include="Content\morrisjs\examples\lib\example.js" />
+    <Content Include="Content\morrisjs\examples\months-no-smooth.html" />
+    <Content Include="Content\morrisjs\examples\negative.html" />
+    <Content Include="Content\morrisjs\examples\no-grid.html" />
+    <Content Include="Content\morrisjs\examples\non-continuous.html" />
+    <Content Include="Content\morrisjs\examples\non-date.html" />
+    <Content Include="Content\morrisjs\examples\quarters.html" />
+    <Content Include="Content\morrisjs\examples\resize.html" />
+    <Content Include="Content\morrisjs\examples\stacked_bars.html" />
+    <Content Include="Content\morrisjs\examples\timestamps.html" />
+    <Content Include="Content\morrisjs\examples\updating.html" />
+    <Content Include="Content\morrisjs\examples\weeks.html" />
+    <Content Include="Content\morrisjs\examples\years.html" />
+    <Content Include="Content\morrisjs\examples\_template.html" />
+    <Content Include="Content\morrisjs\Gruntfile.js" />
+    <Content Include="Content\morrisjs\morris.css" />
+    <Content Include="Content\morrisjs\morris.js" />
+    <Content Include="Content\morrisjs\morris.min.js" />
+    <Content Include="Content\morrisjs\spec\specs.html" />
+    <Content Include="Content\morrisjs\spec\viz\examples.js" />
+    <Content Include="Content\morrisjs\spec\viz\exemplary\area0.png" />
+    <Content Include="Content\morrisjs\spec\viz\exemplary\bar0.png" />
+    <Content Include="Content\morrisjs\spec\viz\exemplary\line0.png" />
+    <Content Include="Content\morrisjs\spec\viz\exemplary\stacked_bar0.png" />
+    <Content Include="Content\morrisjs\spec\viz\test.html" />
+    <Content Include="Content\morrisjs\spec\viz\visual_specs.js" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\timeline\timeline.css" />
+    <Content Include="Content\metisMenu\metisMenu.css" />
+    <Content Include="Content\metisMenu\metisMenu.js" />
+    <Content Include="Content\metisMenu\metisMenu.min.css" />
+    <Content Include="Content\metisMenu\metisMenu.min.js" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\Site1.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\morrisjs\.bower.json" />
+    <Content Include="Content\morrisjs\.gitignore" />
+    <Content Include="Content\morrisjs\.travis.yml" />
+    <Content Include="Content\morrisjs\bower.json" />
+    <Content Include="Content\morrisjs\bower.travis.json" />
+    <Content Include="Content\morrisjs\less\morris.core.less" />
+    <Content Include="Content\morrisjs\lib\morris.area.coffee" />
+    <Content Include="Content\morrisjs\lib\morris.bar.coffee" />
+    <Content Include="Content\morrisjs\lib\morris.coffee" />
+    <Content Include="Content\morrisjs\lib\morris.donut.coffee" />
+    <Content Include="Content\morrisjs\lib\morris.grid.coffee" />
+    <Content Include="Content\morrisjs\lib\morris.hover.coffee" />
+    <Content Include="Content\morrisjs\lib\morris.line.coffee" />
+    <Content Include="Content\morrisjs\package.json" />
+    <Content Include="Content\morrisjs\README.md" />
+    <Content Include="Content\morrisjs\spec\lib\area\area_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\bar\colours.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\commas_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\hover_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\label_series_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\line\line_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\pad_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Content\morrisjs\spec\support\placeholder.coffee" />
+    <Content Include="Content\morrisjs\spec\viz\run.sh" />
+    <Content Include="Content\font-awesome\.bower.json" />
+    <Content Include="Content\font-awesome\.gitignore" />
+    <Content Include="Content\font-awesome\.npmignore" />
+    <Content Include="Content\font-awesome\bower.json" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\extras.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\spinning.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_extras.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_spinning.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\column_render.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\complex_header.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\defaults.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\dom_multiple_elements.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\dom_toolbar.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\dt_events.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\events_live.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\footer_callback.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\html5-data-attributes.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\html5-data-options.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\language_file.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\length_menu.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\object_dom_read.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\row_callback.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\row_grouping.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\advanced_init\sort_direction_control.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\custom_data_flat.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\custom_data_property.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\arrays.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\arrays_custom_prop.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\arrays_subobjects.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\objects.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\objects_deep.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\objects_root_array.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\objects_subarrays.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\data\orthogonal.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\deep.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\defer_render.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\null_data_source.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\objects.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\objects_subarrays.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\orthogonal-data.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\ajax\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\add_row.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\api_in_init.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\counter_columns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\form.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\highlight.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\multi_filter.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\multi_filter_select.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\regex.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\row_details.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\select_row.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\select_single_row.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\show_hide.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\api\tabs_and_scrolling.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\alt_pagination.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\comma-decimal.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\complex_header.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\dom.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\filter_only.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\flexible_width.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\hidden_columns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\language.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\multiple_tables.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\multi_col_sort.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\scroll_x.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\scroll_xy.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\scroll_y.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\scroll_y_theme.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\state_save.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\table_sorting.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\basic_init\zero_configuration.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\data_sources\ajax.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\data_sources\dom.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\data_sources\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\data_sources\js_array.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\data_sources\server_side.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\plug-ins\api.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\plug-ins\dom_sort.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\plug-ins\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\plug-ins\range_filtering.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\plug-ins\sorting_auto.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\plug-ins\sorting_manual.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\demo.css" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\demo.js" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\details_close.png" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\details_open.png" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\examples.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\syntax\shCore.css" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\syntax\shCore.js" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\custom_vars.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\defer_loading.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\ids.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\jsonp.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\object_data.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\pipeline.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\post.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\row_details.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\ids-arrays.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\ids-objects.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\jsonp.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\mysql.sql" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\objects.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\post.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\postgres.sql" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\server_processing.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\sqlite.sql" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\sqlserver.sql" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\scripts\ssp.class.php" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\select_rows.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\server_side\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\bootstrap.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\cell-border.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\compact.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\display.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\foundation.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\hover.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\jqueryUI.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\no-classes.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\order-column.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\row-border.html" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\styling\stripe.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\css\dataTables.autoFill.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\css\dataTables.autoFill.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\columns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\complete-callback.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\fill-both.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\fill-horizontal.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\scrolling.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\examples\step-callback.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\images\filler.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\js\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\js\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\AutoFill\Readme.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\css\dataTables.colReorder.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\css\dataTables.colReorder.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\alt_insert.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\colvis.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\col_filter.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\fixedcolumns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\fixedheader.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\jqueryui.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\new_init.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\predefined.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\realtime.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\reset.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\scrolling.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\server_side.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\examples\state_save.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\images\insert.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\js\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\js\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\License.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\css\dataTables.colVis.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\css\dataTables.colvis.jqueryui.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\css\dataTables.colVis.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\button_order.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\exclude_columns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\group_columns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\jqueryui.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\mouseover.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\new_init.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\restore.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\text.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\title_callback.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\two_tables.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\examples\two_tables_identical.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\js\dataTables.colVis.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\js\dataTables.colVis.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\License.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\css\dataTables.fixedColumns.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\css\dataTables.fixedColumns.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\bootstrap.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\colvis.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\col_filter.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\css_size.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\index_column.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\left_right_columns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\right_column.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\rowspan.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\server-side-processing.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\size_fixed.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\size_fluid.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\examples\two_columns.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\js\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\License.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\css\dataTables.fixedHeader.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\css\dataTables.fixedHeader.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\examples\header_footer.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\examples\top_left_right.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\examples\two_tables.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\examples\zIndexes.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\js\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedHeader\Readme.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\css\dataTables.keyTable.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\css\dataTables.keyTable.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\examples\events.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\examples\html.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\examples\scrolling.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\js\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\js\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\KeyTable\Readme.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\css\dataTables.responsive.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\child-rows\column-control.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\child-rows\custom-renderer.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\child-rows\disable-child-rows.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\child-rows\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\child-rows\right-column.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\child-rows\whole-row-control.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\display-control\auto.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\display-control\classes.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\display-control\complexHeader.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\display-control\fixedHeader.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\display-control\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\display-control\init-classes.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\initialisation\ajax.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\initialisation\className.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\initialisation\default.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\initialisation\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\initialisation\new.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\initialisation\option.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\styling\bootstrap.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\styling\compact.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\styling\foundation.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\styling\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\examples\styling\scrolling.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\js\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\License.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\css\dataTables.scroller.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\css\dataTables.scroller.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\api_scrolling.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\data\2500.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\data\ssp.php" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\large_js_source.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\server-side_processing.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\examples\state_saving.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\images\loading-background.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\js\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\js\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Scroller\Readme.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\css\dataTables.tableTools.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\css\dataTables.tableTools.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\ajax.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\alter_buttons.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\bootstrap.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\button_text.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\collection.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\defaults.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\jqueryui.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\multiple_tables.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\multi_instance.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\new_init.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\pdf_message.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\plug-in.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\select_column.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\select_multi.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\select_os.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\select_single.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\simple.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\examples\swf_path.html" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\collection.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\collection_hover.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\copy.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\copy_hover.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\csv.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\csv_hover.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\pdf.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\pdf_hover.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\print.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\print_hover.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\xls.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\xls_hover.png" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\js\dataTables.tableTools.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\js\dataTables.tableTools.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\swf\copy_csv_xls.swf" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\1\dataTables.bootstrap.css" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\1\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\2\dataTables.bootstrap.css" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\2\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\2\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\2\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\3\dataTables.bootstrap.css" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\3\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\3\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\3\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\images\sort_asc.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\images\sort_both.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\images\sort_desc.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\bootstrap\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\font-awesome\bootstrap.html" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\font-awesome\dataTables.fontAwesome.css" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\font-awesome\datatables.html" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\font-awesome\foundation.html" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\dataTables.foundation.css" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\images\sort_asc.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\images\sort_both.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\images\sort_desc.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\foundation\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\jqueryui\dataTables.jqueryui.css" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\jqueryui\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\jqueryui\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\jqueryui\index.html" />
+    <Content Include="Scripts\DataTables-1.10.7\jquery-2.1.1.js" />
+    <Content Include="Scripts\DataTables-1.10.7\jquery.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\license.txt" />
+    <Content Include="Scripts\DataTables-1.10.7\media\css\jquery.dataTables.css" />
+    <Content Include="Scripts\DataTables-1.10.7\media\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\DataTables-1.10.7\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Scripts\DataTables-1.10.7\media\images\favicon.ico" />
+    <Content Include="Scripts\DataTables-1.10.7\media\images\sort_asc.png" />
+    <Content Include="Scripts\DataTables-1.10.7\media\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.7\media\images\sort_both.png" />
+    <Content Include="Scripts\DataTables-1.10.7\media\images\sort_desc.png" />
+    <Content Include="Scripts\DataTables-1.10.7\media\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.7\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables-1.10.7\media\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables-1.10.7\media\js\jquery.js" />
+    <Content Include="Scripts\datatables\ace-elements.min.js" />
+    <Content Include="Scripts\datatables\ace.min.js" />
+    <Content Include="Scripts\datatables\bootstrap.min.js" />
+    <Content Include="Scripts\datatables\dataTables.colVis.min.js" />
+    <Content Include="Scripts\datatables\dataTables.tableTools.min.js" />
+    <Content Include="Scripts\datatables\jquery.dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\datatables\jquery.dataTables.js" />
+    <Content Include="Scripts\datatables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\datatables\jquery.min.js" />
+    <Content Include="Scripts\gridmvc-ext.js" />
+    <Content Include="Scripts\gridmvc.customwidgets.js" />
+    <Content Include="Scripts\gridmvc.lang.fr.js" />
+    <Content Include="Scripts\gridmvc.min.js.map" />
+    <Content Include="Scripts\DataTables-1.10.7\Contributing.md" />
+    <Content Include="Scripts\DataTables-1.10.7\examples\resources\syntax\Syntax Highlighter license" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColReorder\Readme.md" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\ColVis\Readme.md" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\FixedColumns\Readme.md" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\css\dataTables.responsive.scss" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\Responsive\Readme.md" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\psd\collection.psd" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\psd\copy document.psd" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\psd\file_types.psd" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\images\psd\printer.psd" />
+    <Content Include="Scripts\DataTables-1.10.7\extensions\TableTools\Readme.md" />
+    <Content Include="Scripts\DataTables-1.10.7\media\images\Sorting icons.psd" />
+    <Content Include="Scripts\DataTables-1.10.7\Readme.md" />
+    <Content Include="Scripts\DataTables-1.10.7\integration\jqueryui\dataTables.jqueryui.scss" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Icon.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\ladda-bootstrap\ladda.min.js" />
+    <Content Include="Scripts\ladda-bootstrap\spin.min.js" />
+    <Content Include="Scripts\metisMenu\dist\metisMenu.css" />
+    <Content Include="Scripts\metisMenu\dist\metisMenu.js" />
+    <Content Include="Scripts\metisMenu\dist\metisMenu.min.css" />
+    <Content Include="Scripts\metisMenu\dist\metisMenu.min.js" />
+    <Content Include="Scripts\metisMenu\Gruntfile.js" />
+    <Content Include="Scripts\metisMenu\src\metisMenu.css" />
+    <Content Include="Scripts\metisMenu\src\metisMenu.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\js\morris-data.js" />
+    <Content Include="Scripts\morrisjs\examples\area-as-line.html" />
+    <Content Include="Scripts\morrisjs\examples\area.html" />
+    <Content Include="Scripts\morrisjs\examples\bar-colors.html" />
+    <Content Include="Scripts\morrisjs\examples\bar-no-axes.html" />
+    <Content Include="Scripts\morrisjs\examples\bar.html" />
+    <Content Include="Scripts\morrisjs\examples\days.html" />
+    <Content Include="Scripts\morrisjs\examples\decimal-custom-hover.html" />
+    <Content Include="Scripts\morrisjs\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Scripts\morrisjs\examples\diagonal-xlabels.html" />
+    <Content Include="Scripts\morrisjs\examples\donut-colors.html" />
+    <Content Include="Scripts\morrisjs\examples\donut-formatter.html" />
+    <Content Include="Scripts\morrisjs\examples\donut.html" />
+    <Content Include="Scripts\morrisjs\examples\dst.html" />
+    <Content Include="Scripts\morrisjs\examples\events.html" />
+    <Content Include="Scripts\morrisjs\examples\goals.html" />
+    <Content Include="Scripts\morrisjs\examples\lib\example.css" />
+    <Content Include="Scripts\morrisjs\examples\lib\example.js" />
+    <Content Include="Scripts\morrisjs\examples\months-no-smooth.html" />
+    <Content Include="Scripts\morrisjs\examples\negative.html" />
+    <Content Include="Scripts\morrisjs\examples\no-grid.html" />
+    <Content Include="Scripts\morrisjs\examples\non-continuous.html" />
+    <Content Include="Scripts\morrisjs\examples\non-date.html" />
+    <Content Include="Scripts\morrisjs\examples\quarters.html" />
+    <Content Include="Scripts\morrisjs\examples\resize.html" />
+    <Content Include="Scripts\morrisjs\examples\stacked_bars.html" />
+    <Content Include="Scripts\morrisjs\examples\timestamps.html" />
+    <Content Include="Scripts\morrisjs\examples\updating.html" />
+    <Content Include="Scripts\morrisjs\examples\weeks.html" />
+    <Content Include="Scripts\morrisjs\examples\years.html" />
+    <Content Include="Scripts\morrisjs\examples\_template.html" />
+    <Content Include="Scripts\morrisjs\Gruntfile.js" />
+    <Content Include="Scripts\morrisjs\morris.css" />
+    <Content Include="Scripts\morrisjs\morris.js" />
+    <Content Include="Scripts\morrisjs\morris.min.js" />
+    <Content Include="Scripts\morrisjs\spec\specs.html" />
+    <Content Include="Scripts\morrisjs\spec\viz\examples.js" />
+    <Content Include="Scripts\morrisjs\spec\viz\exemplary\area0.png" />
+    <Content Include="Scripts\morrisjs\spec\viz\exemplary\bar0.png" />
+    <Content Include="Scripts\morrisjs\spec\viz\exemplary\line0.png" />
+    <Content Include="Scripts\morrisjs\spec\viz\exemplary\stacked_bar0.png" />
+    <Content Include="Scripts\morrisjs\spec\viz\test.html" />
+    <Content Include="Scripts\morrisjs\spec\viz\visual_specs.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\raphael\dev\amdDev.js" />
+    <Content Include="Scripts\raphael\dev\index.js" />
+    <Content Include="Scripts\raphael\dev\require.js" />
+    <Content Include="Scripts\raphael\license.txt" />
+    <Content Include="Scripts\raphael\raphael-min.js" />
+    <Content Include="Scripts\raphael\raphael.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\js\iv.js" />
+    <Content Include="Scripts\URI.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\ace.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\Details.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\metisMenu\.bower.json" />
+    <Content Include="Scripts\metisMenu\bower.json" />
+    <Content Include="Scripts\metisMenu\LICENSE" />
+    <Content Include="Scripts\metisMenu\package.json" />
+    <Content Include="Scripts\metisMenu\README.md" />
+    <Content Include="Scripts\morrisjs\.bower.json" />
+    <Content Include="Scripts\morrisjs\.gitignore" />
+    <Content Include="Scripts\morrisjs\.travis.yml" />
+    <Content Include="Scripts\morrisjs\bower.json" />
+    <Content Include="Scripts\morrisjs\bower.travis.json" />
+    <Content Include="Scripts\morrisjs\less\morris.core.less" />
+    <Content Include="Scripts\morrisjs\lib\morris.area.coffee" />
+    <Content Include="Scripts\morrisjs\lib\morris.bar.coffee" />
+    <Content Include="Scripts\morrisjs\lib\morris.coffee" />
+    <Content Include="Scripts\morrisjs\lib\morris.donut.coffee" />
+    <Content Include="Scripts\morrisjs\lib\morris.grid.coffee" />
+    <Content Include="Scripts\morrisjs\lib\morris.hover.coffee" />
+    <Content Include="Scripts\morrisjs\lib\morris.line.coffee" />
+    <Content Include="Scripts\morrisjs\package.json" />
+    <Content Include="Scripts\morrisjs\README.md" />
+    <Content Include="Scripts\morrisjs\spec\lib\area\area_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\bar\colours.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\commas_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\hover_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\label_series_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\line\line_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\pad_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Scripts\morrisjs\spec\support\placeholder.coffee" />
+    <Content Include="Scripts\morrisjs\spec\viz\run.sh" />
+    <Content Include="Scripts\raphael\.bower.json" />
+    <Content Include="Scripts\raphael\bower.json" />
+    <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\Home\Index3.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Shared\_AjaxGridPager.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>40110</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:17199/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Enter Dividend";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index")<span class="divider">/</span></li>
+    <li>@Html.ActionLink("Minister Account Statement", "AccountStatement")
+        <span class="divider">/</span></li>
+    <li class="active">Enter Dividend</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-edit"></i>Enter Dividend Value</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+    
+                            <div class="well form-horizontal span6" style="margin-top: 10px;">
+                                <h5 style="margin: 2px 3px 6px 3px;">Enter Dividend Value for Year @Session["YearString"] </h5>
+                                @*<hr style="margin: 3px;" />*@
+                                @Html.ValidationSummary(true)                                
+
+                                <div class="control-group">    
+                                    <label class="control-label">=N=</label>                                
+                                    <div class="controls">@Html.Editor("txtDiv")
+                                    </div>
+                                </div>
+
+                                <div class="form-actions" style="margin-bottom: 0px;">                                    
+                                    <button class="btn btn-primary" title="Update record" type="submit">Save</button>
+                                    <button class="btn btn-default" title="Go to previous page" type="button"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Cancel</button>
+                                </div>
+                            </div>                               
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+   @* <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#Church').change(updateTotal);
+            $('#Minister').change(updateTotal); 
+            $('#Total').attr("readonly", true);
+            $('#NetBal').attr("readonly", true);
+        });
+
+        function updateTotal()
+        {
+            $('#Total').val(parseFloat($('#Church').val())
+                + parseFloat($('#Minister').val()));
+
+            $('#NetBal').val(parseFloat($('#Church').val())
+                + parseFloat($('#Minister').val()));
+        }
+
+    </script>*@
+
+}

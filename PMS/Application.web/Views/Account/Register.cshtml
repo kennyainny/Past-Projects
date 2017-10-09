@@ -1,0 +1,114 @@
+﻿@model Application.Web.Models.RegisterModel
+
+@{    
+    ViewBag.Title = " Add New User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "AdminRole")
+        <span class="divider">/</span></li>
+    <li class="active">Add New User</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-plus"></i> Add New User</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">                        
+                            <div class="well form-horizontal span6" style="margin-top: 10px;">
+                                <h5 style="margin: 3px;">Enter User Details </h5>
+                                <hr style="margin: 3px;" />
+                               @* @using (@Html.BeginForm("Register", "Account",
+                                    FormMethod.Get, new { id = "RoleForm", style = "margin-top: 7px;" }))
+                            {
+                                  <div class="control-group">
+                                    <label class="control-label">Role: </label>
+                                    <div class="controls">
+                                        @Html.DropDownList("MinRole",
+                                        (SelectList)TempData["MinisterRole"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 0px;",
+                                            onchange = "document.getElementById('RoleForm').submit();"
+                                        })
+                                    </div>
+                                </div>
+                            }*@
+
+                          @using (Html.BeginForm("Register", "Account",
+                                  FormMethod.Post, new { id = "SubmitRegisterForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+    
+                                @Html.ValidationSummary(false)
+
+                                //@Html.HiddenFor(model => model.UserRole, new { @Value = @ViewBag.minRole })
+
+                                <div class="control-group">
+                                    <label class="control-label">Full Name:</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.FullName)
+                                        @Html.ValidationMessageFor(model => model.FullName)
+                                    </div>
+                                </div>
+                                <div class="control-group";">
+                                    <label class="control-label">Email Address:</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.Email)
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Username:</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.UserName)
+                                        @Html.ValidationMessageFor(model => model.UserName)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Password:</label>
+                                    <div class="controls">
+                                        @Html.PasswordFor(model => model.Password)
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Confirm Password:</label>
+                                    <div class="controls">
+                                        @Html.PasswordFor(model => model.ConfirmPassword)
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                    </div>
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.LastLogin,
+                                        new { @Value = @DateTime.Now.ToString() })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.RegisterDate,
+                                        new { @Value = @DateTime.Now.ToString()})
+                                </div>
+
+                                <div class="form-actions" style="margin-bottom: 0px;">
+                                    <button class="btn btn-primary" title="Update record" type="submit">Create</button>
+                                    <button class="btn btn-default" title="Go to previous page" type="button"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Cancel</button>
+                                </div>                                
+                          }
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

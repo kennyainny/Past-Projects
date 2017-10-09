@@ -1,0 +1,64 @@
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\NaijaHandyManAPI.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\NaijaHandyManAPI.pdb
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\Antlr3.Runtime.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\EntityFramework.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\Microsoft.Web.Infrastructure.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\Newtonsoft.Json.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Net.Http.Formatting.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Helpers.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.WebHost.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Mvc.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Optimization.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Providers.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Razor.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Deployment.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Razor.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\WebGrease.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\EntityFramework.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\Newtonsoft.Json.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Net.Http.Formatting.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Helpers.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.WebHost.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Mvc.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Razor.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Deployment.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Razor.xml
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\obj\Debug\NaijaHandyManAPI.dll
+c:\users\kelechi\documents\visual studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\obj\Debug\NaijaHandyManAPI.pdb
+C:\Users\Kelechi\Documents\Visual Studio 2012\Projects\NaijaHandyManAPI\NaijaHandyManAPI\obj\Debug\NaijaHandyManAPI.csprojResolveAssemblyReference.cache
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\NaijaHandyManAPI.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\NaijaHandyManAPI.pdb
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\Antlr3.Runtime.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\EntityFramework.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\Newtonsoft.Json.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Helpers.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.WebHost.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Mvc.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Optimization.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Providers.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Razor.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\WebGrease.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\EntityFramework.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\Newtonsoft.Json.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Net.Http.Formatting.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Helpers.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Mvc.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.Razor.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\obj\Debug\NaijaHandyManAPI.csprojResolveAssemblyReference.cache
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\obj\Debug\NaijaHandyManAPI.dll
+C:\Users\A.B.J. AINA\Documents\Visual Studio 2012\newest\NaijaHandyManAPI\NaijaHandyManAPI\obj\Debug\NaijaHandyManAPI.pdb

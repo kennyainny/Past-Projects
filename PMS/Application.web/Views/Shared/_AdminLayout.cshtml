@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PMS - Admin :: @ViewBag.Title</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Description Here = PMS">
+    <meta name="author" content="Author Here -ETS">
+    @Styles.Render("~/Content/css")
+
+    @*<link href="~/Content/bootstrap/css/bootstrap.css" rel="stylesheet">*@
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Content/font-awesome-4/css/font-awesome.css" rel="stylesheet">
+    @RenderSection("Styles", required: false)
+</head>
+<body class="">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav pull-right">               
+               @Html.Partial("_LoginPartial")
+            </ul>
+            <a class="brand" href="#l"><span class="first"></span>
+                <span class="second">AGMBS - PMS</span></a>
+            @*Pension Management Software class="active" *@
+        </div>
+    </div>
+     
+    <div class="sidebar-nav">
+        <a href="#dashboard-menu" class="nav-header" data-toggle="collapse">
+            <i class="icon-dashboard"></i>Admin Dashboard</a>
+        <ul id="dashboard-menu" class="nav nav-list collapse in">
+            <li>@Html.ActionLink("Home", "Index", "AdminRole")</li> 
+            <li>@Html.ActionLink("Add New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Activity History", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        </ul>
+         <a href="#manage-district" class="nav-header" data-toggle="collapse">
+            <i class="fa fa-tasks"></i> Manage Districts</a>
+        <ul id="manage-district" class="nav nav-list collapse in">
+            <li>@Html.ActionLink("Add New District", "RegisterDistrict", "AdminRole")</li>
+            <li>@Html.ActionLink("Manage Districts", "ManageDistrict", "AdminRole")</li>
+        </ul>
+        <a href="#manage-minister" class="nav-header" data-toggle="collapse">
+            <i class="fa fa-tasks"></i> Manage Ministers</a>
+        <ul id="manage-minister" class="nav nav-list collapse in">            
+            <li>@Html.ActionLink("Add New Minister", "RegisterMinister", "AdminRole")</li> 
+            <li>@Html.ActionLink("Manage Ministers", "ManageMinister", "AdminRole")</li> 
+            <li>@Html.ActionLink("Exited Ministers", "ExitedMinisters", "AdminRole")</li>  
+            <li>@Html.ActionLink("Paid Off Ministers", "PaidOffMinisters", "AdminRole")</li>           
+        </ul>
+        <a href="#manage-contribution" class="nav-header" data-toggle="collapse">
+            <i class="fa fa-tasks"></i> Manage Contributions</a>
+        <ul id="manage-contribution" class="nav nav-list collapse in">            
+            <li>@Html.ActionLink("New Contribution Schedule", "CreateTempTableRecord", "AdminRole")</li>
+            <li>@Html.ActionLink("Contribution Schedule", "ContributionSchedule", "AdminRole")</li>
+            <li>@Html.ActionLink("Contributions Checklist", "ContributionChecklist", "AdminRole")</li>
+        </ul>       
+        <a href="#custom-report" class="nav-header" data-toggle="collapse">
+            <i class="fa fa-tasks"></i> Custom Reports</a>
+        <ul id="custom-report" class="nav nav-list collapse in">
+            <li>@Html.ActionLink("Reconciliation Summary", "ReconciliationReport", "AdminRole")</li>
+            <li>@Html.ActionLink("Account Statement", "AccountStatement", "AdminRole")</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <hr>
+        @*<p>&copy; @DateTime.Now.Year - ETS Nigeria</p>  *@      
+        <p>&copy; 2014 - Assemblies of God Ministers Benefit Scheme (AGMBS)</p>
+    </footer>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrapjs")
+     @Scripts.Render("~/bundles/jqueryval")
+     @Scripts.Render("~/bundles/customjs")
+
+     <script type="text/javascript">
+
+         //$(document).ready(function () {
+             
+         //    $("li").css("class", "active");
+         //    //.sidebar-nav > .nav-list >  
+         //});
+    </script>
+
+    @RenderSection("scripts", required: false)  
+    
+</body>
+</html>
+
+

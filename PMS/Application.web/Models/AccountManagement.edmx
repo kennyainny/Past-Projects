@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AccountsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountGroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="affects_gross" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="entries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tag_id" Type="int" />
+          <Property Name="entry_type" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="dr_total" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="cr_total" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="narration" Type="text" />
+        </EntityType>
+        <EntityType Name="entry_items">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="entry_id" Type="int" Nullable="false" />
+          <Property Name="ledger_id" Type="int" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="dc" Type="char" MaxLength="1" />
+          <Property Name="reconciliation_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="entry_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="label" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="base_type" Type="int" Nullable="false" />
+          <Property Name="numbering" Type="int" Nullable="false" />
+          <Property Name="prefix" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="suffix" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="zero_padding" Type="int" Nullable="false" />
+          <Property Name="bank_cash_ledger_restriction" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ledgers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="op_balance" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="op_balance_dc" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="reconciliation" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="level" Type="int" />
+          <Property Name="host_ip" Type="varchar" MaxLength="25" />
+          <Property Name="user" Type="nchar" MaxLength="100" />
+          <Property Name="url" Type="varchar" MaxLength="225" />
+          <Property Name="user_agent" Type="varchar" MaxLength="100" />
+          <Property Name="message_title" Type="varchar" MaxLength="225" />
+          <Property Name="message_desc" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="fy_start" Type="date" />
+          <Property Name="fy_end" Type="date" />
+          <Property Name="currency_symbol" Type="varchar" MaxLength="10" />
+          <Property Name="date_format" Type="varchar" MaxLength="30" />
+          <Property Name="timezone" Type="varchar" MaxLength="255" />
+          <Property Name="manage_inventory" Type="int" />
+          <Property Name="account_locked" Type="int" />
+          <Property Name="email_protocol" Type="varchar" MaxLength="9" />
+          <Property Name="email_host" Type="varchar" MaxLength="255" />
+          <Property Name="email_port" Type="int" />
+          <Property Name="email_username" Type="varchar" MaxLength="255" />
+          <Property Name="email_password" Type="varchar" MaxLength="255" />
+          <Property Name="print_paper_height" Type="float" />
+          <Property Name="print_paper_width" Type="float" />
+          <Property Name="print_margin_top" Type="float" />
+          <Property Name="print_margin_bottom" Type="float" />
+          <Property Name="print_margin_left" Type="float" />
+          <Property Name="print_margin_right" Type="float" />
+          <Property Name="print_orientation" Type="varchar" MaxLength="1" />
+          <Property Name="print_page_format" Type="varchar" MaxLength="1" />
+          <Property Name="database_version" Type="int" />
+        </EntityType>
+        <Association Name="FK_entry_items_entries">
+          <End Role="entries" Type="Self.entries" Multiplicity="1" />
+          <End Role="entry_items" Type="Self.entry_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="entry_items">
+              <PropertyRef Name="entry_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_entry_items_ledgers">
+          <End Role="ledgers" Type="Self.ledgers" Multiplicity="1" />
+          <End Role="entry_items" Type="Self.entry_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ledgers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="entry_items">
+              <PropertyRef Name="ledger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ledgers_AccountGroups">
+          <End Role="AccountGroups" Type="Self.AccountGroups" Multiplicity="1" />
+          <End Role="ledgers" Type="Self.ledgers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ledgers">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ledgers_ledgers">
+          <End Role="entry_types" Type="Self.entry_types" Multiplicity="1" />
+          <End Role="ledgers" Type="Self.ledgers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="entry_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ledgers">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AccountsModelStoreContainer">
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entries" EntityType="Self.entries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entry_items" EntityType="Self.entry_items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entry_types" EntityType="Self.entry_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ledgers" EntityType="Self.ledgers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="logs" EntityType="Self.logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_entry_items_entries" Association="Self.FK_entry_items_entries">
+            <End Role="entries" EntitySet="entries" />
+            <End Role="entry_items" EntitySet="entry_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_entry_items_ledgers" Association="Self.FK_entry_items_ledgers">
+            <End Role="ledgers" EntitySet="ledgers" />
+            <End Role="entry_items" EntitySet="entry_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ledgers_AccountGroups" Association="Self.FK_ledgers_AccountGroups">
+            <End Role="AccountGroups" EntitySet="AccountGroups" />
+            <End Role="ledgers" EntitySet="ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ledgers_ledgers" Association="Self.FK_ledgers_ledgers">
+            <End Role="entry_types" EntitySet="entry_types" />
+            <End Role="ledgers" EntitySet="ledgers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AccountsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="affects_gross" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ledgers" Relationship="AccountsModel.FK_ledgers_AccountGroups" FromRole="AccountGroup" ToRole="ledger" />
+        </EntityType>
+        <EntityType Name="entry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tag_id" Type="Int32" />
+          <Property Name="entry_type" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="dr_total" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="cr_total" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="entry_items" Relationship="AccountsModel.FK_entry_items_entries" FromRole="entry" ToRole="entry_items" />
+        </EntityType>
+        <EntityType Name="entry_items">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="entry_id" Type="Int32" Nullable="false" />
+          <Property Name="ledger_id" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="dc" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="reconciliation_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="entry" Relationship="AccountsModel.FK_entry_items_entries" FromRole="entry_items" ToRole="entry" />
+          <NavigationProperty Name="ledger" Relationship="AccountsModel.FK_entry_items_ledgers" FromRole="entry_items" ToRole="ledger" />
+        </EntityType>
+        <EntityType Name="entry_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="label" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="base_type" Type="Int32" Nullable="false" />
+          <Property Name="numbering" Type="Int32" Nullable="false" />
+          <Property Name="prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="suffix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zero_padding" Type="Int32" Nullable="false" />
+          <Property Name="bank_cash_ledger_restriction" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ledger" Relationship="AccountsModel.FK_ledgers_ledgers" FromRole="entry_types" ToRole="ledger" />
+        </EntityType>
+        <EntityType Name="ledger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="op_balance" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="op_balance_dc" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="reconciliation" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AccountGroup" Relationship="AccountsModel.FK_ledgers_AccountGroups" FromRole="ledger" ToRole="AccountGroup" />
+          <NavigationProperty Name="entry_items" Relationship="AccountsModel.FK_entry_items_ledgers" FromRole="ledger" ToRole="entry_items" />
+          <NavigationProperty Name="entry_types" Relationship="AccountsModel.FK_ledgers_ledgers" FromRole="ledger" ToRole="entry_types" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="level" Type="Int32" />
+          <Property Name="host_ip" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="user" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="user_agent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="message_title" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="message_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="setting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" annotation:StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fy_start" Type="DateTime" Precision="0" />
+          <Property Name="fy_end" Type="DateTime" Precision="0" />
+          <Property Name="currency_symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="date_format" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="timezone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="manage_inventory" Type="Int32" />
+          <Property Name="account_locked" Type="Int32" />
+          <Property Name="email_protocol" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="email_host" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email_port" Type="Int32" />
+          <Property Name="email_username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email_password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="print_paper_height" Type="Double" />
+          <Property Name="print_paper_width" Type="Double" />
+          <Property Name="print_margin_top" Type="Double" />
+          <Property Name="print_margin_bottom" Type="Double" />
+          <Property Name="print_margin_left" Type="Double" />
+          <Property Name="print_margin_right" Type="Double" />
+          <Property Name="print_orientation" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="print_page_format" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="database_version" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="acct" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
+          <EntitySet Name="entries" EntityType="Self.entry" />
+          <EntitySet Name="entry_items" EntityType="Self.entry_items" />
+          <EntitySet Name="entry_types" EntityType="Self.entry_types" />
+          <EntitySet Name="ledgers" EntityType="Self.ledger" />
+          <EntitySet Name="logs" EntityType="Self.log" />
+          <EntitySet Name="settings" EntityType="Self.setting" />
+          <AssociationSet Name="FK_ledgers_AccountGroups" Association="AccountsModel.FK_ledgers_AccountGroups">
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+            <End Role="ledger" EntitySet="ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_entry_items_entries" Association="AccountsModel.FK_entry_items_entries">
+            <End Role="entry" EntitySet="entries" />
+            <End Role="entry_items" EntitySet="entry_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_entry_items_ledgers" Association="AccountsModel.FK_entry_items_ledgers">
+            <End Role="ledger" EntitySet="ledgers" />
+            <End Role="entry_items" EntitySet="entry_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ledgers_ledgers" Association="AccountsModel.FK_ledgers_ledgers">
+            <End Role="entry_types" EntitySet="entry_types" />
+            <End Role="ledger" EntitySet="ledgers" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_ledgers_AccountGroups">
+          <End Type="AccountsModel.AccountGroup" Role="AccountGroup" Multiplicity="1" />
+          <End Type="AccountsModel.ledger" Role="ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ledger">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_entry_items_entries">
+          <End Type="AccountsModel.entry" Role="entry" Multiplicity="1" />
+          <End Type="AccountsModel.entry_items" Role="entry_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entry">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="entry_items">
+              <PropertyRef Name="entry_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_entry_items_ledgers">
+          <End Type="AccountsModel.ledger" Role="ledger" Multiplicity="1" />
+          <End Type="AccountsModel.entry_items" Role="entry_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ledger">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="entry_items">
+              <PropertyRef Name="ledger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ledgers_ledgers">
+          <End Type="AccountsModel.entry_types" Role="entry_types" Multiplicity="1" />
+          <End Type="AccountsModel.ledger" Role="ledger" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="entry_types">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ledger">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AccountsModelStoreContainer" CdmEntityContainer="acct">
+          <EntitySetMapping Name="AccountGroups">
+            <EntityTypeMapping TypeName="AccountsModel.AccountGroup">
+              <MappingFragment StoreEntitySet="AccountGroups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="affects_gross" ColumnName="affects_gross" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entries">
+            <EntityTypeMapping TypeName="AccountsModel.entry">
+              <MappingFragment StoreEntitySet="entries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tag_id" ColumnName="tag_id" />
+                <ScalarProperty Name="entry_type" ColumnName="entry_type" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dr_total" ColumnName="dr_total" />
+                <ScalarProperty Name="cr_total" ColumnName="cr_total" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entry_items">
+            <EntityTypeMapping TypeName="AccountsModel.entry_items">
+              <MappingFragment StoreEntitySet="entry_items">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="entry_id" ColumnName="entry_id" />
+                <ScalarProperty Name="ledger_id" ColumnName="ledger_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="dc" ColumnName="dc" />
+                <ScalarProperty Name="reconciliation_date" ColumnName="reconciliation_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entry_types">
+            <EntityTypeMapping TypeName="AccountsModel.entry_types">
+              <MappingFragment StoreEntitySet="entry_types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="base_type" ColumnName="base_type" />
+                <ScalarProperty Name="numbering" ColumnName="numbering" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="zero_padding" ColumnName="zero_padding" />
+                <ScalarProperty Name="bank_cash_ledger_restriction" ColumnName="bank_cash_ledger_restriction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ledgers">
+            <EntityTypeMapping TypeName="AccountsModel.ledger">
+              <MappingFragment StoreEntitySet="ledgers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="op_balance" ColumnName="op_balance" />
+                <ScalarProperty Name="op_balance_dc" ColumnName="op_balance_dc" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="reconciliation" ColumnName="reconciliation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logs">
+            <EntityTypeMapping TypeName="AccountsModel.log">
+              <MappingFragment StoreEntitySet="logs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="host_ip" ColumnName="host_ip" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="user_agent" ColumnName="user_agent" />
+                <ScalarProperty Name="message_title" ColumnName="message_title" />
+                <ScalarProperty Name="message_desc" ColumnName="message_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="settings">
+            <EntityTypeMapping TypeName="AccountsModel.setting">
+              <MappingFragment StoreEntitySet="settings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fy_start" ColumnName="fy_start" />
+                <ScalarProperty Name="fy_end" ColumnName="fy_end" />
+                <ScalarProperty Name="currency_symbol" ColumnName="currency_symbol" />
+                <ScalarProperty Name="date_format" ColumnName="date_format" />
+                <ScalarProperty Name="timezone" ColumnName="timezone" />
+                <ScalarProperty Name="manage_inventory" ColumnName="manage_inventory" />
+                <ScalarProperty Name="account_locked" ColumnName="account_locked" />
+                <ScalarProperty Name="email_protocol" ColumnName="email_protocol" />
+                <ScalarProperty Name="email_host" ColumnName="email_host" />
+                <ScalarProperty Name="email_port" ColumnName="email_port" />
+                <ScalarProperty Name="email_username" ColumnName="email_username" />
+                <ScalarProperty Name="email_password" ColumnName="email_password" />
+                <ScalarProperty Name="print_paper_height" ColumnName="print_paper_height" />
+                <ScalarProperty Name="print_paper_width" ColumnName="print_paper_width" />
+                <ScalarProperty Name="print_margin_top" ColumnName="print_margin_top" />
+                <ScalarProperty Name="print_margin_bottom" ColumnName="print_margin_bottom" />
+                <ScalarProperty Name="print_margin_left" ColumnName="print_margin_left" />
+                <ScalarProperty Name="print_margin_right" ColumnName="print_margin_right" />
+                <ScalarProperty Name="print_orientation" ColumnName="print_orientation" />
+                <ScalarProperty Name="print_page_format" ColumnName="print_page_format" />
+                <ScalarProperty Name="database_version" ColumnName="database_version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

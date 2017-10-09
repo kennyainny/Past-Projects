@@ -1,0 +1,196 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+
+<link id="Link1" runat="server" rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" /> 
+    <link id="Link2" runat="server" rel="icon" href="~/images/favicon.ico" type="image/ico" /> 
+
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            display: block;
+            float: left;
+            text-align: center;
+            width: 960px;
+            height: 142px;
+        }
+        .style2
+        {
+            width: 96%;
+            height: 21px;
+            text-align: center;
+        }
+        .style3
+        {
+            width: 151px;
+            z-index: auto;
+            position: static;
+        }
+        .style4
+        {
+            height: 108px;
+            }
+    </style>
+</head>
+<body>
+    <form runat="server">
+    <div class="page" style="background-color: #C0C0C0">
+        <div class="header">
+            <div class="style1" 
+                
+                style="margin-top: 0px;">
+                <asp:Panel ID="Panel4" runat="server" BackImageUrl="~/images/Unilever_head.jpg" 
+                    Height="142px" style="margin-top: 0px">
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label37" runat="server" ForeColor="#003366" 
+                        style="text-align: center; font-size: x-large; font-weight: 700; font-family: Algerian; color: #003399;" 
+                        Text="WELCOME TO THE DEPARTMENT OF SAFETY, HEALTH AND ENVIRONMENT"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label38" runat="server" ForeColor="#003366" 
+                        style="text-align: center; font-size: large; font-weight: 700; font-family: Algerian; color: #003399;" 
+                        Text="UNILEVER (SHE) NIGERIA."></asp:Label>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <asp:Label ID="Label1" runat="server" ForeColor="Maroon" 
+                        style="font-family: Cambria; font-size: small; color: #CC0099;"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label2" runat="server" ForeColor="Maroon" 
+                        style="font-size: small; font-family: Cambria; color: #CC0099;"></asp:Label>
+                </asp:Panel>
+                <br />
+                <br />
+                <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem Text="Administrators" Value="Administrators" 
+                            NavigateUrl="~/AdminPanel/AdminPanel.aspx"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Contact Us" Value="Contact Us"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main" style="background-color: #C0C0C0">
+            <table cellpadding="2" cellspacing="5" class="style2" align="left" 
+                style="background-color: #C0C0C0; margin-left: 0px;">
+                <tr>
+                    <td class="style3" 
+                        
+                        
+                        
+                        style="background-color: #C0C0C0; text-align: left;">
+                                <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Maroon" 
+                                    NavigateUrl="~/Account/Logout.aspx" 
+                                    
+                                    
+                                    style="font-family: Cambria; font-size: medium; color: #CC0099; font-weight: 700;">LOG OUT</asp:HyperLink>
+                    </td>
+                    <td>
+    <h2 class="style2">
+        Administrative Panel</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style3" 
+                        
+                        
+                        style="background-color: #C0C0C0; text-align: left;" 
+                        valign="top">
+                        <asp:Panel ID="Panel3" runat="server" Height="237px" style="font-size: small" 
+                            HorizontalAlign="Left">
+                            <asp:Menu ID="Menu1" runat="server" BorderStyle="None" 
+                                DynamicHorizontalOffset="2" Font-Names="Calibri" Font-Size="Small" 
+                                ForeColor="Blue" StaticSubMenuIndent="20px" 
+                                style="font-size: x-small; text-align: left; font-weight: 700; color: #0033CC;" 
+                                DynamicVerticalOffset="10" Height="100px" ToolTip="Click on a task">
+                                <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <DynamicMenuStyle BackColor="#B5C7DE" HorizontalPadding="10px" 
+                                    VerticalPadding="10px" />
+                                <DynamicSelectedStyle BackColor="#507CD1" HorizontalPadding="10px" 
+                                    ItemSpacing="10px" VerticalPadding="10px" />
+                                <Items>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/AdminPanel.aspx" 
+                                        Text="Update &amp; View Tracker" Value="Update &amp; View Trends">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/TaskTracker.aspx" 
+                                        Text="Admin Event Log" Value="Admin Task History">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/TrendByDept.aspx" 
+                                        Text="Actual Planned Completed" Value="Actual &amp; Planned Value">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/CompletedChart.aspx" 
+                                        Text="% Completed Chart" Value="Completed Chart"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/ActualPlannedChart.aspx" 
+                                        Text="Audit Trend By Function" Value="Audit Trend By Function"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/ObseverCreds.aspx" 
+                                        Text="Observer's Login Credentials" Value="Observer Credentials">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/EditRecord.aspx" 
+                                        Text="Modify Observer Records" Value="Modify Record"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/AddObserver.aspx" 
+                                        Text="Add a New Observer" Value="Add an Observer"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/AddSubDept.aspx" 
+                                        Text="Add a Sub-department" Value="Add a Sub-department"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/DeleteObserver.aspx" 
+                                        Text="Delete an Observer" Value="Delete an Observer"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/CreateAdmin.aspx" 
+                                        Text="Create a New Administrator" Value="Create Administrator">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/WeeklyEditor.aspx" 
+                                        Text="Weekly Tracking Sheet Editor" Value="Weekly Tracking Sheet Editor">
+                                    </asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/AdminPanel/NMReportz.aspx" Text="Near-Miss Report" 
+                                        Value="Near-Miss Report"></asp:MenuItem>
+                                </Items>
+                                <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <StaticSelectedStyle BackColor="#507CD1" />
+                            </asp:Menu>
+                        </asp:Panel>
+                    </td>
+                    <td class="style4">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+        </div>
+        <div class="clear">
+            <div class="clear hideSkiplink">
+                <asp:Panel ID="Panel1" runat="server" Height="26px" style="text-align: center">
+                    <asp:Label ID="Label36" runat="server" Font-Bold="False" 
+    Font-Italic="False" Font-Names="Microsoft Sans Serif" Font-Size="Small" 
+    ForeColor="White" Text="Copyright"></asp:Label>
+                    &nbsp;<asp:Label 
+    ID="Label34" runat="server" Font-Bold="True" 
+    ForeColor="White" Text="©"></asp:Label>
+                    &nbsp;<asp:Label ID="Label33" runat="server" Font-Bold="False" 
+                        Font-Italic="False" Font-Names="Microsoft Sans Serif" Font-Size="Small" 
+                        ForeColor="White" Text="2011 Unilever"></asp:Label>
+                </asp:Panel>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

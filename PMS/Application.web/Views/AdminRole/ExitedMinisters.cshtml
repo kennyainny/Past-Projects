@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Application.Web.Models.MinisterProfile>
+
+@using GridMvc.Html;
+ 
+@{
+    ViewBag.Title = "Manage Ministers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index", "AdminRole")
+        <span class="divider">/</span></li>
+    <li>@Html.ActionLink("Manage Minister", "ManageMinister", "AdminRole")
+        <span class="divider">/</span></li>
+    <li class="active">Exited Ministers</li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+        <form method="post" action="AssignChequeNumber">
+
+            <br />
+            <button class="btn btn-info" id="AssignCheckno" title="Assign Check Number" style="margin-left: 5px;" @*value="A" *@
+                    @*onclick="location.href='@Url.Action("AssignCheckNumber")'"*@>
+                <i class="fa fa-share-square-o"></i> Pay Off Statement
+            </button>
+            @*<span class="label label-info counts" style="margin-top: 4px;">0 Selected</span>*@
+
+            @*<a class="btn btn-info" title="Assign Check Number" href="#" id="Selectall" style="margin-left: 5px;" @*value="A" *@
+            @*     >
+                <i class="fa fa-share-square-o"></i> Select All
+            </a>*@
+            @*<span style="" class="btn-group" data-toggle="buttons">
+                <label class="btn btn-danger">
+                    <input type="checkbox" id="Selectall" autocomplete="off"> <span id="selc">Select All</span>
+                </label>
+            </span>*@
+            <a href="AssignCheckNumber" id="done" style="display:none;">Done</a>
+
+
+            <div class="row-fluid sortable ui-sortable">
+                <div class="box span12">
+
+                    <div class="box-header well" data-original-title="Manage Ministers"
+                         style="">
+                        <h2><i class="fa fa-list-alt"></i> Exited Ministers</h2>
+                        <span class="label label-warning" style="float: right; margin-top: 4px;">+@Model.Count()</span>
+                    </div>
+                    <div class="box-content">
+                        <div class="row-fluid">
+                            @Html.Grid(Model).Columns(columns =>
+                       {
+                           columns.Add()
+                                   .Encoded(false)
+                                   .Sanitized(false)
+                               //.SetWidth(30)
+                                   .RenderValueAs
+                                   (c => @<input class="selectbx" name="chkBox" type="checkbox" value="@c.MinisterCode">);
+
+                           columns.Add(c => c.MinisterCode).Titled("Code").Css("code-bold");
+
+
+
+                           //.Sortable(true).Filterable(true)
+                           columns.Add(c => c.Surname).Titled("Surname");//.Filterable(true).Sortable(true);
+                           columns.Add(c => c.OtherName).Titled("Othernames");//.Filterable(true).Sortable(true);
+                           columns.Add(c => c.DistrictId).Titled("District");//.Filterable(true).Sortable(true);
+                           //columns.Add(c => c.Status).Titled("Exit Mode");//.Filterable(true).Sortable(true);
+                           columns.Add(c => c.ExitReason).Titled("Exit Reason");//.Filterable(true).Sortable(true);
+                           columns.Add(c => c.RetiredDate).Titled("Retired Date");
+                           columns.Add(c => c.YearsServed).Titled("Years Served");
+                           columns.Add(c => c.PermanentAddress).Titled("Permanent Address");
+
+                           /* Adding not mapped column, that renders body, using inline Razor html helper */
+                        @* columns.Add()
+                              .Encoded(false)
+                              .Sanitized(false)
+                          //.SetWidth(30)
+                              .RenderValueAs
+                              (d => @<a class="btn btn-success" href="@Url.Action("EditMinister", new { id = d.Id })">
+                                  <i class="fa fa-edit icon-white"></i> Edit </a>);
+
+                        columns.Add()
+                              .Encoded(false)
+                              .Sanitized(false)
+                          //.SetWidth(30)
+                              .RenderValueAs
+                              (d => @<a class="btn btn-warning" href="@Url.Action("ExitMinister", new { id = d.Id })">
+                                  <i class="fa fa-cut icon-white"></i> Exit </a>);
+                        *@
+                       })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @section Styles { @Styles.Render("~/Content/datatablecss")   }
+
+
+    @section Scripts {
+
+        @Scripts.Render("~/bundles/jquerydatatable")
+
+        <script type="text/javascript">
+
+
+
+
+            $(document).ready(function () {
+
+                $("input[type='checkbox']").change(function (e) {
+                    if ($(this).is(":checked")) {
+                        $(this).closest('tr').addClass("selected");
+                        $('#AssignCheckno').enabled;
+                    } else {
+                        $(this).closest('tr').removeClass("selected");
+                        $('.counts').html(table.rows('.selected').data().length + ' Selected');
+                    }
+                });
+
+
+
+
+
+                var table = $('.grid-table').DataTable();
+
+            
+            });
+
+        </script>
+    }

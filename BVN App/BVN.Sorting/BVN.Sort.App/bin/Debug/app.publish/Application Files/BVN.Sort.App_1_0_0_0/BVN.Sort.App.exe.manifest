@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="BVN.Sort.App.exe" version="1.0.0.0" publicKeyToken="9101423f0e02c348" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="BVN.Sort.App" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="BVN.Sort.App.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BVN.Sort.App.exe" size="43520">
+      <assemblyIdentity name="BVN.Sort.App" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>AWoqwtEMyUtmvepu7KLl+Vr+X1gZF8JdQKFr9j3jSiw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="BVN.Sort.App.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=EMV04-H650-W7\KEHINDE AINA" issuerKeyHash="eb8285263758e50e2545989ea4a77e7db21081fe" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>QnIP3i1gRLDtQMtPINeoEiGrrvxVPMMI/VO1OE3oOts=</DigestValue></Reference></SignedInfo><SignatureValue>Wi8BWxizcCMlnJikrRwgpbNGAAQ2432dLGNTSre3POENQed5VfUuxXRAcMnL/okUN5O/SDXL/ewgRXNIqlQepSJ0fDiasV7nbZ+qjb3NRyyQvC/Blg4HnsFzb2HiN7td57j2zZ4iyZtpHCNLpVLReuT4Bg9rpZSsve4e2qs9KUs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>mGxpY6p6/Omorm2dTzMemNxVGMAtvQ4gWIROjK+/98OLJcQR6jdzx3Q3YeLjVc+nSKoVfP3X3lGZGvpctoRf0hrxzBqi03h2zmblI0yrzZiUcgu4qSsdLfYRooVQNBDfdfbDTAorSqtI2P5WYnI6xwBiluo8RNT1IodVD+BV+1M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="db3ae84d38b553fd08c33c55fcaeab2112a8d7204fcb40edb044602dde0f7242" Description="" Url=""><as:assemblyIdentity name="BVN.Sort.App.exe" version="1.0.0.0" publicKeyToken="9101423f0e02c348" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=EMV04-H650-W7\KEHINDE AINA</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>16XbTaUdeXfZ92vO2R0C1mUX+lymDG9WO2iD9UZSTWQ=</DigestValue></Reference></SignedInfo><SignatureValue>bAgPMQ4v8G28FcT7HaPniGmKZbeJPPkA55nO6b2t+/TEDIvkuZDSFtFjJoXN2YT77eE6Wz/C9qSD6MUVWzhrS5AtHofuG6VHEEW7Mc9eNrL+k5n3hFcBvyD+7djxFnD9VKmQYQRfnsqv77nLExdKLdgN/ACshpcVROEHyzkbhL4=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>mGxpY6p6/Omorm2dTzMemNxVGMAtvQ4gWIROjK+/98OLJcQR6jdzx3Q3YeLjVc+nSKoVfP3X3lGZGvpctoRf0hrxzBqi03h2zmblI0yrzZiUcgu4qSsdLfYRooVQNBDfdfbDTAorSqtI2P5WYnI6xwBiluo8RNT1IodVD+BV+1M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICATCCAWqgAwIBAgIQbfNZapArFYhNupTkKupDBzANBgkqhkiG9w0BAQsFADA/MT0wOwYDVQQDHjQARQBNAFYAMAA0AC0ASAA2ADUAMAAtAFcANwBcAEsARQBIAEkATgBEAEUAIABBAEkATgBBMB4XDTE2MDExOTEyNDI0M1oXDTE3MDExODE4NDI0M1owPzE9MDsGA1UEAx40AEUATQBWADAANAAtAEgANgA1ADAALQBXADcAXABLAEUASABJAE4ARABFACAAQQBJAE4AQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAmGxpY6p6/Omorm2dTzMemNxVGMAtvQ4gWIROjK+/98OLJcQR6jdzx3Q3YeLjVc+nSKoVfP3X3lGZGvpctoRf0hrxzBqi03h2zmblI0yrzZiUcgu4qSsdLfYRooVQNBDfdfbDTAorSqtI2P5WYnI6xwBiluo8RNT1IodVD+BV+1MCAwEAATANBgkqhkiG9w0BAQsFAAOBgQAerdabMZoLvkhF8xG9LSqhNd0zE+88FKCYXFzJrVqRD3cqeo/jw5dDkRxwvWeO5+hnjFqx8ZuD4tFuA/E3oKAd+Jp9vgCZkDAcXBZUnLrKQArgt53HZuz6d3sALIFBjfwTRcRS4nJ63hV3wNzCYAfUazpJRUsuFzZibI39bknVMA==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

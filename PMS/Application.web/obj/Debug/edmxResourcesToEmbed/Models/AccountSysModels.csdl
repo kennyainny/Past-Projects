@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AccountSysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccountGroup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="parent_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="affects_gross" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="entry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tag_id" Type="Int32" />
+    <Property Name="entry_type" Type="Int32" Nullable="false" />
+    <Property Name="number" Type="Int32" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dr_total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cr_total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="entry_items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="entry_id" Type="Int32" Nullable="false" />
+    <Property Name="ledger_id" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="dc" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="reconciliation_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="entry_types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="label" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="base_type" Type="Int32" Nullable="false" />
+    <Property Name="numbering" Type="Int32" Nullable="false" />
+    <Property Name="prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="suffix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="zero_padding" Type="Int32" Nullable="false" />
+    <Property Name="bank_cash_ledger_restriction" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ledger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="op_balance" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="op_balance_dc" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <Property Name="reconciliation" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="level" Type="Int32" />
+    <Property Name="host_ip" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="user" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="user_agent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="message_title" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="message_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="setting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fy_start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fy_end" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="currency_symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date_format" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="timezone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="manage_inventory" Type="Int32" Nullable="false" />
+    <Property Name="account_locked" Type="Int32" Nullable="false" />
+    <Property Name="email_protocol" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_host" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_port" Type="Int32" Nullable="false" />
+    <Property Name="email_username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="print_paper_height" Type="Double" Nullable="false" />
+    <Property Name="print_paper_width" Type="Double" Nullable="false" />
+    <Property Name="print_margin_top" Type="Double" Nullable="false" />
+    <Property Name="print_margin_bottom" Type="Double" Nullable="false" />
+    <Property Name="print_margin_left" Type="Double" Nullable="false" />
+    <Property Name="print_margin_right" Type="Double" Nullable="false" />
+    <Property Name="print_orientation" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="print_page_format" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="database_version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
+    <EntitySet Name="entries" EntityType="Self.entry" />
+    <EntitySet Name="entry_items" EntityType="Self.entry_items" />
+    <EntitySet Name="entry_types" EntityType="Self.entry_types" />
+    <EntitySet Name="ledgers" EntityType="Self.ledger" />
+    <EntitySet Name="logs" EntityType="Self.log" />
+    <EntitySet Name="settings" EntityType="Self.setting" />
+  </EntityContainer>
+</Schema>

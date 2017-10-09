@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HandyManModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HandyManModelStoreContainer">
+    <EntitySet Name="Artisan" EntityType="HandyManModel.Store.Artisan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArtisanRating" EntityType="HandyManModel.Store.ArtisanRating" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="City" EntityType="HandyManModel.Store.City" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Job" EntityType="HandyManModel.Store.Job" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="State" EntityType="HandyManModel.Store.State" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="HandyManModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="HandyManModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ArtisanRating_Artisan" Association="HandyManModel.Store.FK_ArtisanRating_Artisan">
+      <End Role="Artisan" EntitySet="Artisan" />
+      <End Role="ArtisanRating" EntitySet="ArtisanRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArtisanRating_User" Association="HandyManModel.Store.FK_ArtisanRating_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ArtisanRating" EntitySet="ArtisanRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_State" Association="HandyManModel.Store.FK_City_State">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Artisan">
+    <Key>
+      <PropertyRef Name="ArtisanID" />
+    </Key>
+    <Property Name="ArtisanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="OfficialWorkingHours" Type="varchar" MaxLength="20" />
+    <Property Name="Picture" Type="image" />
+    <Property Name="CPCRegistrationNumber" Type="varchar" MaxLength="50" />
+    <Property Name="JobID" Type="int" Nullable="false" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+    <Property Name="StateID" Type="int" Nullable="false" />
+    <Property Name="FullAddress" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AddressLongitutde" Type="float" />
+    <Property Name="AddressLatitude" Type="float" />
+    <Property Name="Rating" Type="float" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="JobCore" Type="varchar" MaxLength="50" />
+    <Property Name="YearsOfExperience" Type="int" />
+    <Property Name="RegDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ArtisanRating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+    </Key>
+    <Property Name="RatingID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="ArtisanID" Type="int" Nullable="false" />
+    <Property Name="PersonalRating" Type="decimal" Scale="1" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StateID" Type="int" Nullable="false" />
+    <Property Name="CityName" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="JobType" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_ArtisanRating_Artisan">
+    <End Role="Artisan" Type="HandyManModel.Store.Artisan" Multiplicity="1" />
+    <End Role="ArtisanRating" Type="HandyManModel.Store.ArtisanRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artisan">
+        <PropertyRef Name="ArtisanID" />
+      </Principal>
+      <Dependent Role="ArtisanRating">
+        <PropertyRef Name="ArtisanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArtisanRating_User">
+    <End Role="User" Type="HandyManModel.Store.User" Multiplicity="1" />
+    <End Role="ArtisanRating" Type="HandyManModel.Store.ArtisanRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ArtisanRating">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_State">
+    <End Role="State" Type="HandyManModel.Store.State" Multiplicity="1" />
+    <End Role="City" Type="HandyManModel.Store.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

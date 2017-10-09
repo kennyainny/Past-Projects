@@ -1,0 +1,5 @@
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Encoding\bin\Release\FI.Library.Encoding.dll
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Encoding\bin\Release\FI.Library.Encoding.pdb
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Encoding\obj\Release\FI.Library.Encoding.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Encoding\obj\Release\FI.Library.Encoding.dll
+C:\Users\Gabriel.EMV01-E5440-W7\Google Drive\Projects\Smart Data Center\FI.Library.Encoding\obj\Release\FI.Library.Encoding.pdb

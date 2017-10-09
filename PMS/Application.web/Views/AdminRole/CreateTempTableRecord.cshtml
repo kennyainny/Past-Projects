@@ -1,0 +1,230 @@
+﻿@model Application.Web.Models.ContributionScheduleTable
+
+@{
+    ViewBag.Title = " Add New Contribution Schedule";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index")<span class="divider">/</span></li>
+    <li>@Html.ActionLink("Contribution Schedule", "ContributionSchedule")<span class="divider">/</span></li>
+    <li class="active"> Add New Contribution Schedule</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-edit"></i> Add a New Contribution Schedule</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+
+                         @using (Html.BeginForm("ImportData", "AdminRole", FormMethod.Post,
+                new { enctype = "multipart/form-data", id = "fileUpload", style = "clear: both; display: inline;" }))
+                        {  
+                            <input type="file" name="file" id="file" style="display: none;" />    
+                            <a>
+                                <button class="btn btn-warning" title="Import record from Excel" type="button" id="import">
+                                    <i class="fa fa-download"></i> Import</button></a>
+                        }
+                        
+                        <a href='@Url.Action("DeleteAllTableRecord", "AdminRole")' 
+                            onclick = "return confirm('Are you sure you wish to delete all Contribution Schedules and start a new one?');">
+                            <button class="btn btn-danger" title="Delete all records and start a new one">
+                                <i class="fa fa-trash-o"></i> Start New Schedule</button></a>
+
+                        <fieldset class="section">
+                            <legend>Set Values: </legend>
+
+                            @using (@Html.BeginForm("CreateTempTableRecord", "AdminRole",
+                                    FormMethod.Get, new { id = "DistrictForm" }))
+                            //BeginForm("Index", "Home", FormMethod.Post, new { id = "TheForm" })){%>
+                            {
+                                <div class="well span11">
+                                <div class="control-group span7" style="margin-left: 15px">
+                                    <div class="control-group" style="margin-bottom: 0px;">
+                                        <label class="control-label label">District: </label>
+
+                                        @Html.DropDownList("SelectedDistrictId",
+                                        (SelectList)TempData["DistrictSelectList"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 5px;",
+                                            onchange = "document.getElementById('DistrictForm').submit();"
+                                        })
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label label">Name: </label>
+                                        @Html.DropDownList("SelectedMinisterId",
+                                        (SelectList)TempData["MinisterNameSelectList"], new
+                                        {
+                                            @class = "controls",
+                                            style = "margin-left: 16px; width: 326px;",
+                                            onchange = "document.getElementById('DistrictForm').submit();"
+                                        })
+                                    </div>
+                                </div>                            
+                                <div class="control-group span3" style="float: right; margin-right: 10px;">
+                                    <div class="control-group" style="margin-bottom: 12px; margin-top: 10px;">
+                                        <label class="control-label label">Year:</label>
+                                        @if (@ViewBag.yearNull == true)
+                                        {
+                                            @Html.DropDownList("year",
+                                            (SelectList)TempData["SelectYear"], "Select Year", new
+                            {
+                                @class = "controls label-default",
+                                style = "margin-left: 19px; width: 100px;",
+                                onchange = "document.getElementById('DistrictForm').submit();"
+                            })
+                                        }
+                                        else
+                                        {                              
+                                            <label class="control-label label label-success" style="margin-left: 19px;"> @ViewBag.year </label>
+                                        }
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label label">Month:</label>
+                                        @if (@ViewBag.monthNull == true)
+                                        {
+                                            @Html.DropDownList("month",
+                            (SelectList)TempData["SelectMonth"], "Select Month", new
+                            {
+                                @class = "controls label-default",
+                                style = "margin-left: 5px; width: 100px;",
+                                onchange = "document.getElementById('DistrictForm').submit();"
+                            })
+                                        }
+                                        else
+                                        {  
+                                            <label class="control-label label label-success" style="margin-left: 5px;"> @ViewBag.month </label>
+                                        }
+                                    </div>
+                                </div> 
+                                    </div>   
+                            }
+                        </fieldset>
+
+                        @if (@ViewBag.IsEmpty)
+                        {
+                            <div style="margin: 30px;">
+                                All the Ministers in @ViewBag.districtSelect have been updated!
+                                 <br />
+                                Please select another district or go back to previous page.
+                            </div>  
+                            <div class="form-actions" style="margin-bottom: 0px;">                                    
+                                    <button class="btn btn-primary" title="Go to previous page" type="button"
+                                        style=" margin-left: 150px;"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Back</button>
+                                </div>                             
+                        }
+                        else
+                        {
+                            using (Html.BeginForm("CreateTempTableRecord", "AdminRole",
+                                        FormMethod.Post, new { id = "SubmitRecordForm" }))
+                            {
+                            @Html.AntiForgeryToken()
+
+                            <div class="well form-horizontal span6">
+                                @*style="margin-left: 250px;"*@
+                                <h5 style="margin: 3px;">Add New Contribution Schedule</h5>
+                                <hr style="margin: 3px;" />
+
+                                @* @Html.ValidationSummary("Please correct the errors and try again.")*@
+
+                                @Html.ValidationSummary(false)
+
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.DistrictId,
+                                        new { @Value = @ViewBag.DistrictId })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.MinisterId,
+                                        new { @Value = @ViewBag.MinisterId })
+                                </div>
+
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.ScheduleYear,
+                                        new { @Value = @ViewBag.year })
+                                </div>
+                                <div class="controls hidden">
+                                    @Html.TextBoxFor(model => model.ScheduleMonth,
+                                        new { @Value = @ViewBag.month })
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Church (10%): </label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.ChurchContribution)
+                                        @Html.ValidationMessageFor(model => model.ChurchContribution)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Minister (5%): </label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.MinisterContribution)
+                                        @Html.ValidationMessageFor(model => model.MinisterContribution)
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Total Contributions: </label>
+                                    <div class="controls editor-field">
+                                        @Html.EditorFor(model => model.TotalContribution)
+                                        @Html.ValidationMessageFor(model => model.TotalContribution)
+                                    </div>
+                                </div>
+                                <div class="form-actions" style="margin-bottom: 0px;">
+                                    <button class="btn btn-primary" title="Update record" type="submit">
+                                        Save</button>
+                                    <button class="btn btn-default" title="Go to previous page" type="button"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Cancel</button>
+                                </div>
+                            </div>                                                                                                                                                     
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#ChurchContribution').change(updateTotal); 
+            $('#MinisterContribution').change(updateTotal);
+            $('#TotalContribution').attr("readonly", true);
+
+            $('#file').change(function () {
+                $('#fileUpload').submit();
+                return false;
+            });
+
+            $('#import').click(function () {
+                $('#file').trigger('click');
+                //return false;
+            });
+
+        });
+
+        function updateTotal()
+        {
+            $('#TotalContribution').val(parseFloat($('#ChurchContribution').val())
+                + parseFloat($('#MinisterContribution').val()));
+        }
+
+    </script>
+}

@@ -1,0 +1,277 @@
+﻿
+@model Application.Web.Models.entry
+<tr>
+    <td>
+        @*@Html.DropDownListFor("EntryType")*@
+        <select class="dc-dropdown">
+            <option value="D">Dr</option>
+            <option value="C">Cr</option>
+        </select>
+    </td>
+    <td>
+        @*@Html.DropDownListFor(model => model.id, (SelectList)ViewBag.Ledgers, string.Empty, new { @class = "ledger-dropdown" })*@
+        @Html.DropDownList("Ledgers", null, String.Empty, new { @class = "ledger-dropdown" })
+    </td>
+    <td>
+        <input type="text" name="DrAmount" class="dr-item" maxlength="15" disabled />
+    </td>
+    <td>
+        <input type="text" name="CrAmounts" class="cr-item" maxlength="15" disabled />
+    </td>
+    <td>
+        <span id="add" class="addrow" title="Add Row">
+            <img src="~/Images/Icons/add.png">
+        </span>
+    </td>
+    <td>
+        <span id="delete" class="deleterow" title="Delete Row">
+            <img src="~/Images/Icons/delete.png">
+        </span>
+
+    </td>
+    <td class="ledger-balance"><div></div></td>
+</tr>
+
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        /* javascript floating point operations */
+        var jsFloatOps = function (param1, param2, op) {
+            param1 = param1 * 100;
+            param2 = param2 * 100;
+            param1 = param1.toFixed(0);
+            param2 = param2.toFixed(0);
+            param1 = Math.floor(param1);
+            param2 = Math.floor(param2);
+            var result = 0;
+            if (op == '+') {
+                result = param1 + param2;
+                result = result / 100;
+                return result;
+            }
+            if (op == '-') {
+                result = param1 - param2;
+                result = result / 100;
+                return result;
+            }
+            if (op == '!=') {
+                if (param1 != param2)
+                    return true;
+                else
+                    return false;
+            }
+            if (op == '==') {
+                if (param1 == param2)
+                    return true;
+                else
+                    return false;
+            }
+            if (op == '>') {
+                if (param1 > param2)
+                    return true;
+                else
+                    return false;
+            }
+            if (op == '<') {
+                if (param1 < param2)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        /* Calculating Dr and Cr total */
+        $('.dr-item').on('change', function () {
+            var drTotal = 0;
+            $(".dr-item").each(function () {
+                var curDr = $(this).val();
+                curDr = parseFloat(curDr);
+                if (isNaN(curDr))
+                    curDr = 0;
+                drTotal = jsFloatOps(drTotal, curDr, '+');
+            });
+            $("table tr #dr-total").text(drTotal);
+            var crTotal = 0;
+            $("table tr .cr-item").each(function () {
+                var curCr = $(this).val();
+                curCr = parseFloat(curCr);
+                if (isNaN(curCr))
+                    curCr = 0;
+                crTotal = jsFloatOps(crTotal, curCr, '+');
+            });
+            $("table tr #cr-total").text(crTotal);
+
+            if (jsFloatOps(drTotal, crTotal, '==')) {
+                $("table tr #dr-total").css("background-color", "#FFFF99");
+                $("table tr #cr-total").css("background-color", "#FFFF99");
+                $("table tr #dr-diff").text("-");
+                $("table tr #cr-diff").text("");
+            } else {
+                $("table tr #dr-total").css("background-color", "#FFE9E8");
+                $("table tr #cr-total").css("background-color", "#FFE9E8");
+                if (jsFloatOps(drTotal, crTotal, '>')) {
+                    $("table tr #dr-diff").text("");
+                    $("table tr #cr-diff").text(jsFloatOps(drTotal, crTotal, '-'));
+                } else {
+                    $("table tr #dr-diff").text(jsFloatOps(crTotal, drTotal, '-'));
+                    $("table tr #cr-diff").text("");
+                }
+            }
+
+        });
+
+        $('.cr-item').on('change', function () {
+            var drTotal = 0;
+            $("table tr .dr-item").each(function () {
+                var curDr = $(this).val();
+                curDr = parseFloat(curDr);
+                if (isNaN(curDr))
+                    curDr = 0;
+                drTotal = jsFloatOps(drTotal, curDr, '+');
+            });
+            $("table tr #dr-total").text(drTotal);
+            var crTotal = 0;
+            $("table tr .cr-item").each(function () {
+                var curCr = $(this).val();
+                curCr = parseFloat(curCr);
+                if (isNaN(curCr))
+                    curCr = 0;
+                crTotal = jsFloatOps(crTotal, curCr, '+');
+            });
+            $("table tr #cr-total").text(crTotal);
+
+            if (jsFloatOps(drTotal, crTotal, '==')) {
+                $("table tr #dr-total").css("background-color", "#FFFF99");
+                $("table tr #cr-total").css("background-color", "#FFFF99");
+                $("table tr #dr-diff").text("-");
+                $("table tr #cr-diff").text("");
+            } else {
+                $("table tr #dr-total").css("background-color", "#FFE9E8");
+                $("table tr #cr-total").css("background-color", "#FFE9E8");
+                if (jsFloatOps(drTotal, crTotal, '>')) {
+                    $("table tr #dr-diff").text("");
+                    $("table tr #cr-diff").text(jsFloatOps(drTotal, crTotal, '-'));
+                } else {
+                    $("table tr #dr-diff").text(jsFloatOps(crTotal, drTotal, '-'));
+                    $("table tr #cr-diff").text("");
+                }
+            }
+        });
+
+        /* Dr - Cr dropdown changed */
+        $('.dc-dropdown').on('change', function () {
+            var drValue = $(this).parent().next().next().children().val();
+            var crValue = $(this).parent().next().next().next().children().val();
+
+            if ($(this).parent().next().children().val() == "") {
+                return;
+            }
+
+            drValue = parseFloat(drValue);
+            if (isNaN(drValue))
+                drValue = 0;
+
+            crValue = parseFloat(crValue);
+            if (isNaN(crValue))
+                crValue = 0;
+
+            if ($(this).val() == "D") {
+                if (drValue == 0 && crValue != 0) {
+                    $(this).parent().next().next().children().val(crValue);
+                }
+                $(this).parent().next().next().next().children().val("");
+                $(this).parent().next().next().next().children().attr('disabled', 'disabled');
+                $(this).parent().next().next().children().removeAttr('disabled');
+            } else {
+                if (crValue == 0 && drValue != 0) {
+                    $(this).parent().next().next().next().children().val(drValue);
+                }
+                $(this).parent().next().next().children().val("");
+                $(this).parent().next().next().children().attr('disabled', 'disabled');
+                $(this).parent().next().next().next().children().removeAttr('disabled');
+            }
+            /* Recalculate Total */
+            $('.dr-item:first').trigger('change');
+            $('.cr-item:first').trigger('change');
+        });
+
+        /* Ledger dropdown changed */
+        $('.ledger-dropdown').on('change', function () {
+            if ($(this).val() == "") {
+                $(this).parent().next().children().val("");
+                $(this).parent().next().next().children().val("");
+                $(this).parent().next().children().attr('disabled', 'disabled');
+                $(this).parent().next().next().children().attr('disabled', 'disabled');
+            } else {
+                $(this).parent().next().children().removeAttr('disabled');
+                $(this).parent().next().next().children().removeAttr('disabled');
+                $(this).parent().prev().children().trigger('change');
+            }
+            $(this).parent().next().children().trigger('change');
+            $(this).parent().next().next().children().trigger('change');
+
+            var ledgerid = $(this).val();
+            var rowid = $(this);
+            if (ledgerid > 0) {
+                $.ajax({
+                    url: "../balance/" + ledgerid,
+                    success: function (data) {
+                        var ledger_bal = parseFloat(data);
+                        if (isNaN(ledger_bal))
+                            ledger_bal = 0;
+                        if (jsFloatOps(ledger_bal, 0, '=='))
+                            rowid.parent().next().next().next().next().next().children().text("0");
+                        else if (jsFloatOps(ledger_bal, 0, '<'))
+                            rowid.parent().next().next().next().next().next().children().text("Cr " + -data);
+                        else
+                            rowid.parent().next().next().next().next().next().children().text("Dr " + data);
+                    }
+                });
+            } else {
+                rowid.parent().next().next().next().next().next().children().text("");
+            }
+        });
+
+        /* Recalculate Total */
+        $('table td .recalculate').click(function () {
+            /* Recalculate Total */
+            $('.dr-item:first').trigger('change');
+            $('.cr-item:first').trigger('change');
+        });
+
+        /* Delete ledger row */
+        $('table td .deleterow').click(function () {
+            $(this).parent().parent().remove();
+            /* Recalculate Total */
+            $('.dr-item:first').trigger('change');
+            $('.cr-item:first').trigger('change');
+        });
+
+        function getAbsolutePath() {
+            var loc = window.location;
+            var pathName = loc.pathname.substr(loc.pathname.lastIndexOf('/') + 1);
+            return pathName;
+            //return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+        }
+
+        /* Add ledger row */
+        $('table td .addrow').on('click', function () {
+            //alert(getAbsolutePath());
+            var cur_obj = this;
+            var add_image_url = $(cur_obj).attr('src');
+
+            $(cur_obj).attr('src', '../Images/Icons/ajax.gif');
+            $.ajax({
+                url: "../addrow/" + getAbsolutePath(),
+                success: function (data) {
+                    $(cur_obj).parent().parent().after(data);
+                    $(cur_obj).attr('src', add_image_url);
+                }
+            });
+        });
+    });
+
+</script>
+

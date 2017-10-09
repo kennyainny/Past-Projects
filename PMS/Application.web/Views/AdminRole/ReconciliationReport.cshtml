@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Application.Web.Models.ReconciliationSummary>
+
+@using GridMvc.Html;
+
+@{
+    ViewBag.Title = "Reconciliation Summary";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Session["ReturnUrl"] = Request.Url;
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index")<span class="divider">/</span></li>
+    <li class="active">Reconciliation Report</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Reconciliation Summary Report">
+                    <h2><i class="icon-list-alt"></i> Reconciliation Summary Report </h2></div>
+                
+                <div class="box-content">
+                    <div class="row-fluid">
+                        @if (@ViewBag.IsEmpty)
+                        {
+
+                        }
+                        else
+                        {
+                        <button class="btn btn-success" title="Export as PDF"
+                            onclick="location.href='@Url.Action("ReconciliationSummaryReport")'">
+                            <i class="fa fa-print"></i> Export & Print </button>
+                        @*<button class="btn btn-warning" title="Post to Reconciliation Summary" 
+                            onclick="location.href='@Url.Action("PostChecklist")'">
+                            <i class="fa fa-send-o"></i> Post Checklist</button>*@
+
+                        @*<div class="span4" style="float: right;">
+                           <label class="control-label label" style="display: inline;">User Posted:</label>
+                           <label class="control-label label label-success" style="display: inline; margin-left:0px;">
+                                @ViewBag.UserPosted </label>                                        
+                        </div>
+                        <div class="span4" style="float: right;">
+                           <label class="control-label label" style="display: inline;">Date Posted:</label>  
+                           <label class="control-label label label-success" style="display: inline;margin-left: 0px;">
+                               @ViewBag.DatePosted </label>                                        
+                        </div>*@
+                        }
+                        <fieldset class="section" style="margin-top: 10px">
+
+                            <legend>Set Values: </legend>
+
+                                @using (@Html.BeginForm("ReconciliationReport", "AdminRole",
+                                    FormMethod.Get, new { id = "ReconciliationReportForm" }))
+                                {       
+                                    <div class="well span11">
+                                <div class="control-group span6" style="margin-top: 5px; margin-left: 30px">
+                                    <div class="control-group" style="margin-bottom: 0px;">
+                                        <label class="control-label label">Year: </label>
+                                    @*<div class="control-group" style="margin-bottom: 5px; margin-top: 0px;"> 
+                                        <label class="control-label label">Year:</label> *@                                     
+                                        @Html.DropDownList("YearID",
+                                            (SelectList)TempData["SelectYearDDL"], new
+                                            {
+                                                @class = "controls label-default",
+                                                style = "margin-left: 10px; width:100px;",
+                                                onchange = "document.getElementById('ReconciliationReportForm').submit();"
+                                            })                                       
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label label">Month: </label>
+                                    @*<div class="control-group" style="margin-right: 30px; float: right; margin-top: 0px;">
+                                        <label class="control-label label">Month:</label>*@
+                                           @Html.DropDownList("MonthID",
+                            (SelectList)TempData["SelectMonthDDL"], new
+                            {
+                                @class = "controls label-default",
+                                style = "margin-left: 5px; width:100px;",
+                                onchange = "document.getElementById('ReconciliationReportForm').submit();"
+                            })                                        
+                                    </div> 
+                                     </div>
+                                        
+                                        <div class="span4" style="margin-top:6px; float: right;">
+                           <label class="control-label label" style="display: inline;">User Posted:</label>
+                           <label class="control-label label label-success" style="display: inline; margin-left:0px;">
+                                @ViewBag.UserPosted </label>                                        
+                        </div>
+                        <div class="span4" style="float: right;">
+                           <label class="control-label label" style="display: inline;">Date Posted:</label>  
+                           <label class="control-label label label-success" style="display: inline;margin-left: 0px;">
+                               @ViewBag.DatePosted </label>                                        
+                        </div>
+                                                                    
+                                @*<div class="control-group span5" style="float: right; margin-right: 20px;">
+                                    <div class="control-group" style="margin-bottom: 12px; margin-top: 10px;">
+                                        <label class="control-label label">User Posted:</label>
+                                        <label class="control-label label label-success" style="margin-left: 19px;"> @ViewBag.UserPosted </label>                                        
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label label">Date Posted:</label>  
+                                         <label class="control-label label label-success" style="margin-left: 5px;"> @ViewBag.DatePosted </label>                                        
+                                    </div>
+                                </div> *@
+                                    </div>                              
+                                }                          
+                        </fieldset>
+
+                        <div id="load-temp-table">
+
+                             @if (@ViewBag.IsEmpty)
+                        {
+                            <div style="margin: 30px;">
+                                No record for the selected month and year!
+                                 <br />
+                                Please set new parameters or post new Contribution Checklist!
+                            </div>  
+                            <div class="form-actions" style="margin-bottom: 0px;">                                    
+                                    <button class="btn btn-primary" title="Go to previous page" type="button"
+                                        style=" margin-left: 150px;"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Back</button>
+                                </div>                             
+                        }
+                        else
+                        {
+
+                       @Html.Grid(Model).Columns(columns =>
+                       {   
+                           columns.Add(c => c.DistrictCode).Titled("Code").Css("code-bold"); //.Filterable(true)
+                           columns.Add(c => c.DistrictName).Titled("District"); //.Filterable(true);
+                           columns.Add(c => c.Remittance).Titled("Remittance");
+                           columns.Add(c => c.Schedule).Titled("Schedule");
+                           columns.Add(c => c.ServiceCharge).Titled("Service Charge");
+                           columns.Add(c => c.NetSchedule).Titled("Net Schedule");
+                           columns.Add(c => c.Debit).Titled("Debit");
+                           columns.Add(c => c.Credit).Titled("Credit");
+                           columns.Add(c => c.Balance).Titled("Balance");
+                           //columns.Add(c => c.PayMonth).Titled("Pay Month");
+                           //columns.Add(c => c.PayYear).Titled("Pay Year");
+                           
+                           if(ViewBag.OldRecon == "FALSE")
+                           {
+                           columns.Add()
+                               .Titled("Action")
+                                   .Encoded(false)
+                                   .Sanitized(false)                               
+                                   .RenderValueAs
+                                   (d => @<a class="btn btn-success" href="@Url.Action("EditReconciliation", new { id = d.Id })">
+                                           <i class="fa fa-edit icon-white"></i>
+                                       Edit </a>);
+                       }                       
+                       })
+                             }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Styles { @Styles.Render("~/Content/datatablecss")   }
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquerydatatable")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $('.grid-table').DataTable();
+        });
+    </script>
+}

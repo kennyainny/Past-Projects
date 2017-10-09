@@ -1,0 +1,125 @@
+﻿@model Application.Web.Models.ContributionScheduleTable
+
+@{
+    ViewBag.Title = "Edit Contribution Schedule";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Home", "Index")<span class="divider">/</span></li>
+    <li>@Html.ActionLink("Contribution Schedule", "ContributionSchedule")
+        <span class="divider">/</span></li>
+    <li class="active">Edit Contribution Schedule</li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Note: </strong>@ViewBag.info
+        </div>
+
+        <div class="row-fluid sortable ui-sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title="Contribution Schedule Format">
+                    <h2><i class="icon-edit"></i>Edit Contribution Schedule</h2>
+                </div>
+                <div class="box-content">
+                    <div class="row-fluid">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+    
+                            <div class="well form-horizontal span6" style="margin-top: 10px;">
+                                <h5 style="margin: 3px;">Edit Contribution Schedule for @ViewBag.surname </h5>
+                                <hr style="margin: 3px;" />
+                                @Html.ValidationSummary(true)
+                                @Html.HiddenFor(model => model.Id)
+                                @Html.HiddenFor(model => model.DistrictId)
+                                @Html.HiddenFor(model => model.MinisterId)
+                                @Html.HiddenFor(model => model.ScheduleYear)
+                                @Html.HiddenFor(model => model.ScheduleMonth)
+
+                                <div class="control-group" style="margin-bottom: 10px; margin-top: 15px;">
+                                    <label class="control-label">District:</label>
+                                    <label class="control-label label marginleft" style="width: 211px;">@ViewBag.district</label>
+                                </div>
+
+                                <div class="control-group" style="margin-bottom: 10px;">
+                                    <label class="control-label">Code:</label>
+                                    <label class="control-label label marginleft" style="width: 211px;">@ViewBag.ministerCode</label>
+                                </div>
+
+                                <div class="control-group" style="margin-bottom: 10px;">
+                                    <label class="control-label">Surname:</label>
+                                    <label class="control-label label marginleft" style="width: 211px;">@ViewBag.surname</label>
+                                </div>
+
+                                <div class="control-group" style="margin-bottom: 10px;">
+                                    <label class="control-label">Othernames:</label>
+                                    <label class="control-label label marginleft" style="width: 211px;">@ViewBag.otherName</label>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Church (10%):</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.ChurchContribution)
+                                        @Html.ValidationMessageFor(model => model.ChurchContribution)
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Minister (5%):</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.MinisterContribution)
+                                        @Html.ValidationMessageFor(model => model.MinisterContribution)
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Total Contributions:</label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.TotalContribution)
+                                        @Html.ValidationMessageFor(model => model.TotalContribution)
+                                    </div>
+                                </div>
+
+                                <div class="form-actions" style="margin-bottom: 0px;">
+                                    @*<input type="submit" value="Save" class="btn btn-primary" />*@
+                                    <button class="btn btn-primary" title="Update record" type="submit">Save</button>
+                                    <button class="btn btn-default" title="Go to previous page" type="button"
+                                        onclick="location.href='@Session["ReturnUrl"].ToString()'">
+                                        Cancel</button>
+                                    @*onclick="location.href='@Url.Action("ContributionSchedule")'">Cancel</button>*@
+                                    @*@Session["ReturnUrl"]*@
+                                </div>
+                            </div>                               
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#ChurchContribution').change(updateTotal);
+            $('#MinisterContribution').change(updateTotal);
+            $('#TotalContribution').attr("readonly", true);
+        });
+
+        function updateTotal()
+        {
+            $('#TotalContribution').val(parseFloat($('#ChurchContribution').val())
+                + parseFloat($('#MinisterContribution').val()));
+        }
+
+    </script>
+}

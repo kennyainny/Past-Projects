@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AccountSysModelStoreContainer" CdmEntityContainer="Entities2">
+    <EntitySetMapping Name="AccountGroups">
+      <EntityTypeMapping TypeName="AccountSysModel.AccountGroup">
+        <MappingFragment StoreEntitySet="AccountGroups">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="affects_gross" ColumnName="affects_gross" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entries">
+      <EntityTypeMapping TypeName="AccountSysModel.entry">
+        <MappingFragment StoreEntitySet="entries">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tag_id" ColumnName="tag_id" />
+          <ScalarProperty Name="entry_type" ColumnName="entry_type" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="dr_total" ColumnName="dr_total" />
+          <ScalarProperty Name="cr_total" ColumnName="cr_total" />
+          <ScalarProperty Name="narration" ColumnName="narration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entry_items">
+      <EntityTypeMapping TypeName="AccountSysModel.entry_items">
+        <MappingFragment StoreEntitySet="entry_items">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="entry_id" ColumnName="entry_id" />
+          <ScalarProperty Name="ledger_id" ColumnName="ledger_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="dc" ColumnName="dc" />
+          <ScalarProperty Name="reconciliation_date" ColumnName="reconciliation_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entry_types">
+      <EntityTypeMapping TypeName="AccountSysModel.entry_types">
+        <MappingFragment StoreEntitySet="entry_types">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="base_type" ColumnName="base_type" />
+          <ScalarProperty Name="numbering" ColumnName="numbering" />
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="suffix" ColumnName="suffix" />
+          <ScalarProperty Name="zero_padding" ColumnName="zero_padding" />
+          <ScalarProperty Name="bank_cash_ledger_restriction" ColumnName="bank_cash_ledger_restriction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ledgers">
+      <EntityTypeMapping TypeName="AccountSysModel.ledger">
+        <MappingFragment StoreEntitySet="ledgers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="op_balance" ColumnName="op_balance" />
+          <ScalarProperty Name="op_balance_dc" ColumnName="op_balance_dc" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="reconciliation" ColumnName="reconciliation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logs">
+      <EntityTypeMapping TypeName="AccountSysModel.log">
+        <MappingFragment StoreEntitySet="logs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="host_ip" ColumnName="host_ip" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="user_agent" ColumnName="user_agent" />
+          <ScalarProperty Name="message_title" ColumnName="message_title" />
+          <ScalarProperty Name="message_desc" ColumnName="message_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="AccountSysModel.setting">
+        <MappingFragment StoreEntitySet="settings">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fy_start" ColumnName="fy_start" />
+          <ScalarProperty Name="fy_end" ColumnName="fy_end" />
+          <ScalarProperty Name="currency_symbol" ColumnName="currency_symbol" />
+          <ScalarProperty Name="date_format" ColumnName="date_format" />
+          <ScalarProperty Name="timezone" ColumnName="timezone" />
+          <ScalarProperty Name="manage_inventory" ColumnName="manage_inventory" />
+          <ScalarProperty Name="account_locked" ColumnName="account_locked" />
+          <ScalarProperty Name="email_protocol" ColumnName="email_protocol" />
+          <ScalarProperty Name="email_host" ColumnName="email_host" />
+          <ScalarProperty Name="email_port" ColumnName="email_port" />
+          <ScalarProperty Name="email_username" ColumnName="email_username" />
+          <ScalarProperty Name="email_password" ColumnName="email_password" />
+          <ScalarProperty Name="print_paper_height" ColumnName="print_paper_height" />
+          <ScalarProperty Name="print_paper_width" ColumnName="print_paper_width" />
+          <ScalarProperty Name="print_margin_top" ColumnName="print_margin_top" />
+          <ScalarProperty Name="print_margin_bottom" ColumnName="print_margin_bottom" />
+          <ScalarProperty Name="print_margin_left" ColumnName="print_margin_left" />
+          <ScalarProperty Name="print_margin_right" ColumnName="print_margin_right" />
+          <ScalarProperty Name="print_orientation" ColumnName="print_orientation" />
+          <ScalarProperty Name="print_page_format" ColumnName="print_page_format" />
+          <ScalarProperty Name="database_version" ColumnName="database_version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

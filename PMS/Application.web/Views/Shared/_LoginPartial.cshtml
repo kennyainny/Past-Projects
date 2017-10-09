@@ -1,0 +1,65 @@
+﻿
+@{
+    string xx = "data-placement",
+        yy = "data-original-title";
+}
+
+    @if (Request.IsAuthenticated)
+    {
+       <li> @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+        @Html.AntiForgeryToken()
+        }</li>
+        <li><a href="#" class="tip visible-desktop" role="button" data-original-title="Settings" data-placement="bottom">Settings</a></li>
+        <li>@Html.ActionLink("Welcome, " + User.Identity.Name, "Manage", "Account", routeValues: null,
+htmlAttributes: new { @class = "tip visible-desktop", @xx = "bottom", title = "Manage", role = "button" })</li>    
+ 
+        
+        <li><a href="javascript:document.getElementById('logoutForm').submit()"
+            class="tip visible-desktop" role="button" data-original-title="Sign Out"
+            data-placement="bottom">Log off</a>
+        </li>         
+ 
+@* <li>@Html.ActionLink("Log Out", "LogOff", "Account", FormMethod.Post, @Html.AntiForgeryToken(),
+            htmlAttributes:new {role = "post", id = "logoutForm", @class="visible-desktop",title="Sign Out"})</li>
+         *@
+    }
+    else
+    {
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+   
+    }
+
+@* <a href="#" class="tip visible-desktop" role="button" data-original-title="Settings" data-placement="bottom">Settings</a></li>
+                <li id="fat-menu" class="dropdown">
+                    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-user"></i>Jack Neyman                           
+                        <i class="icon-caret-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a tabindex="-1" href="#">My Account</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
+                        <li class="divider visible-phone"></li>
+                        <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                    </ul>
+                </li>*@
+
+@*@if (Request.IsAuthenticated)
+{
+    <li>Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!</li>
+        <li>@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            </li>
+            }   
+}
+else
+{
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+   
+}*@

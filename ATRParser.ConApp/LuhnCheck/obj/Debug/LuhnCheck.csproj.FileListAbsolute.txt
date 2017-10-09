@@ -1,0 +1,6 @@
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\LuhnCheck\bin\Debug\LuhnCheck.exe.config
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\LuhnCheck\bin\Debug\LuhnCheck.exe
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\LuhnCheck\bin\Debug\LuhnCheck.pdb
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\LuhnCheck\obj\Debug\LuhnCheck.csprojResolveAssemblyReference.cache
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\LuhnCheck\obj\Debug\LuhnCheck.exe
+C:\Users\KEHINDE AINA\Documents\Visual Studio 2013\Projects\EMV-GSM\ATRParser.ConApp\LuhnCheck\obj\Debug\LuhnCheck.pdb

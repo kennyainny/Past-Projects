@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdminRoleModelStoreContainer" CdmEntityContainer="AdminRoleEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="AdminRoleModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountRecords">
+      <EntityTypeMapping TypeName="AdminRoleModel.AccountRecord">
+        <MappingFragment StoreEntitySet="AccountRecords">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="MinisterId" ColumnName="MinisterId" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="MinisterCode" ColumnName="MinisterCode" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Minister" ColumnName="Minister" />
+          <ScalarProperty Name="Church" ColumnName="Church" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="NetBal" ColumnName="NetBal" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContributionCheckListTables">
+      <EntityTypeMapping TypeName="AdminRoleModel.ContributionCheckListTable">
+        <MappingFragment StoreEntitySet="ContributionCheckListTables">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="MinisterId" ColumnName="MinisterId" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="MinisterCode" ColumnName="MinisterCode" />
+          <ScalarProperty Name="MinisterName" ColumnName="MinisterName" />
+          <ScalarProperty Name="ChurchContribution" ColumnName="ChurchContribution" />
+          <ScalarProperty Name="MinisterContribution" ColumnName="MinisterContribution" />
+          <ScalarProperty Name="ServiceContribution" ColumnName="ServiceContribution" />
+          <ScalarProperty Name="TotalContribution" ColumnName="TotalContribution" />
+          <ScalarProperty Name="NetContribution" ColumnName="NetContribution" />
+          <ScalarProperty Name="PayMonth" ColumnName="PayMonth" />
+          <ScalarProperty Name="PayYear" ColumnName="PayYear" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContributionScheduleTables">
+      <EntityTypeMapping TypeName="AdminRoleModel.ContributionScheduleTable">
+        <MappingFragment StoreEntitySet="ContributionScheduleTables">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="MinisterId" ColumnName="MinisterId" />
+          <ScalarProperty Name="ChurchContribution" ColumnName="ChurchContribution" />
+          <ScalarProperty Name="MinisterContribution" ColumnName="MinisterContribution" />
+          <ScalarProperty Name="TotalContribution" ColumnName="TotalContribution" />
+          <ScalarProperty Name="ScheduleMonth" ColumnName="ScheduleMonth" />
+          <ScalarProperty Name="ScheduleYear" ColumnName="ScheduleYear" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="AdminRoleModel.District">
+        <MappingFragment StoreEntitySet="Districts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="AdminRoleModel.History">
+        <MappingFragment StoreEntitySet="Histories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NameofActor" ColumnName="NameofActor" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="ActionDetail" ColumnName="ActionDetail" />
+          <ScalarProperty Name="TimeStamps" ColumnName="TimeStamps" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MinisterProfiles">
+      <EntityTypeMapping TypeName="AdminRoleModel.MinisterProfile">
+        <MappingFragment StoreEntitySet="MinisterProfiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MinisterCode" ColumnName="MinisterCode" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="OtherName" ColumnName="OtherName" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Retired" ColumnName="Retired" />
+          <ScalarProperty Name="Both" ColumnName="Both" />
+          <ScalarProperty Name="Stopped" ColumnName="Stopped" />
+          <ScalarProperty Name="NextOfKin" ColumnName="NextOfKin" />
+          <ScalarProperty Name="EmployDate" ColumnName="EmployDate" />
+          <ScalarProperty Name="RetiredDate" ColumnName="RetiredDate" />
+          <ScalarProperty Name="MergeDate" ColumnName="MergeDate" />
+          <ScalarProperty Name="DateJoined" ColumnName="DateJoined" />
+          <ScalarProperty Name="NextRelation" ColumnName="NextRelation" />
+          <ScalarProperty Name="ExitReason" ColumnName="ExitReason" />
+          <ScalarProperty Name="nExist" ColumnName="nExist" />
+          <ScalarProperty Name="nBatch" ColumnName="nBatch" />
+          <ScalarProperty Name="nCheque" ColumnName="nCheque" />
+          <ScalarProperty Name="nUserID" ColumnName="nUserID" />
+          <ScalarProperty Name="PhotoString" ColumnName="PhotoString" />
+          <ScalarProperty Name="YearsServed" ColumnName="YearsServed" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="IsPaidOff" ColumnName="IsPaidOff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Months">
+      <EntityTypeMapping TypeName="AdminRoleModel.Month">
+        <MappingFragment StoreEntitySet="Months">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReconciliationSummaries">
+      <EntityTypeMapping TypeName="AdminRoleModel.ReconciliationSummary">
+        <MappingFragment StoreEntitySet="ReconciliationSummaries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="Remittance" ColumnName="Remittance" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="ServiceCharge" ColumnName="ServiceCharge" />
+          <ScalarProperty Name="NetSchedule" ColumnName="NetSchedule" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="PayMonth" ColumnName="PayMonth" />
+          <ScalarProperty Name="PayYear" ColumnName="PayYear" />
+          <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+          <ScalarProperty Name="UserPosted" ColumnName="UserPosted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserModels">
+      <EntityTypeMapping TypeName="AdminRoleModel.UserModel">
+        <MappingFragment StoreEntitySet="UserModels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="AdminRoleModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Membership">
+      <EntityTypeMapping TypeName="AdminRoleModel.webpages_Membership">
+        <MappingFragment StoreEntitySet="webpages_Membership">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_OAuthMembership">
+      <EntityTypeMapping TypeName="AdminRoleModel.webpages_OAuthMembership">
+        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Years">
+      <EntityTypeMapping TypeName="AdminRoleModel.Year">
+        <MappingFragment StoreEntitySet="Years">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="YearValue" ColumnName="YearValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

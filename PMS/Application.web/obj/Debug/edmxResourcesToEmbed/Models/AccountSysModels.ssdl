@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AccountSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccountGroups">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parent_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="affects_gross" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="entries">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tag_id" Type="int" />
+    <Property Name="entry_type" Type="int" Nullable="false" />
+    <Property Name="number" Type="int" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="dr_total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cr_total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="narration" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="entry_items">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="entry_id" Type="int" Nullable="false" />
+    <Property Name="ledger_id" Type="int" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="dc" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="reconciliation_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="entry_types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="label" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="base_type" Type="int" Nullable="false" />
+    <Property Name="numbering" Type="int" Nullable="false" />
+    <Property Name="prefix" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="suffix" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="zero_padding" Type="int" Nullable="false" />
+    <Property Name="bank_cash_ledger_restriction" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ledgers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="group_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="op_balance" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="op_balance_dc" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="reconciliation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="logs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="level" Type="int" />
+    <Property Name="host_ip" Type="varchar" MaxLength="25" />
+    <Property Name="user" Type="nchar" MaxLength="100" />
+    <Property Name="url" Type="varchar" MaxLength="225" />
+    <Property Name="user_agent" Type="varchar" MaxLength="100" />
+    <Property Name="message_title" Type="varchar" MaxLength="225" />
+    <Property Name="message_desc" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="settings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="fy_start" Type="datetime" Nullable="false" />
+    <Property Name="fy_end" Type="datetime" Nullable="false" />
+    <Property Name="currency_symbol" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="date_format" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="timezone" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="manage_inventory" Type="int" Nullable="false" />
+    <Property Name="account_locked" Type="int" Nullable="false" />
+    <Property Name="email_protocol" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="email_host" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email_port" Type="int" Nullable="false" />
+    <Property Name="email_username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email_password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="print_paper_height" Type="float" Nullable="false" />
+    <Property Name="print_paper_width" Type="float" Nullable="false" />
+    <Property Name="print_margin_top" Type="float" Nullable="false" />
+    <Property Name="print_margin_bottom" Type="float" Nullable="false" />
+    <Property Name="print_margin_left" Type="float" Nullable="false" />
+    <Property Name="print_margin_right" Type="float" Nullable="false" />
+    <Property Name="print_orientation" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="print_page_format" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="database_version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="AccountSysModelStoreContainer">
+    <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entries" EntityType="Self.entries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entry_items" EntityType="Self.entry_items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entry_types" EntityType="Self.entry_types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ledgers" EntityType="Self.ledgers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="logs" EntityType="Self.logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

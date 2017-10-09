@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HandyManModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HandyManEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Artisans" EntityType="HandyManModel.Artisan" />
+    <EntitySet Name="ArtisanRatings" EntityType="HandyManModel.ArtisanRating" />
+    <EntitySet Name="Cities" EntityType="HandyManModel.City" />
+    <EntitySet Name="Jobs" EntityType="HandyManModel.Job" />
+    <EntitySet Name="States" EntityType="HandyManModel.State" />
+    <EntitySet Name="sysdiagrams" EntityType="HandyManModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="HandyManModel.User" />
+    <AssociationSet Name="FK_Artisan_Job" Association="HandyManModel.FK_Artisan_Job">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="Artisan" EntitySet="Artisans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArtisanRating_Artisan" Association="HandyManModel.FK_ArtisanRating_Artisan">
+      <End Role="Artisan" EntitySet="Artisans" />
+      <End Role="ArtisanRating" EntitySet="ArtisanRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArtisanRating_User" Association="HandyManModel.FK_ArtisanRating_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ArtisanRating" EntitySet="ArtisanRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_State" Association="HandyManModel.FK_City_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Artisan">
+    <Key>
+      <PropertyRef Name="ArtisanID" />
+    </Key>
+    <Property Name="ArtisanID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="OfficialWorkingHours" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CPCRegistrationNumber" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FullAddress" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="AddressLongitude" Type="Double" />
+    <Property Name="AddressLatitude" Type="Double" />
+    <Property Name="Rating" Type="Double" />
+    <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="JobCore" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="YearsOfExperience" Type="Int32" />
+    <Property Name="RegDate" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="NoOfRecommendations" Type="Int32" />
+    <NavigationProperty Name="Job" Relationship="HandyManModel.FK_Artisan_Job" FromRole="Artisan" ToRole="Job" />
+    <NavigationProperty Name="ArtisanRatings" Relationship="HandyManModel.FK_ArtisanRating_Artisan" FromRole="Artisan" ToRole="ArtisanRating" />
+  </EntityType>
+  <EntityType Name="ArtisanRating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+    </Key>
+    <Property Name="RatingID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ArtisanID" Type="Int32" Nullable="false" />
+    <Property Name="PersonalRating" Type="Decimal" Precision="18" Scale="1" />
+    <NavigationProperty Name="Artisan" Relationship="HandyManModel.FK_ArtisanRating_Artisan" FromRole="ArtisanRating" ToRole="Artisan" />
+    <NavigationProperty Name="User" Relationship="HandyManModel.FK_ArtisanRating_User" FromRole="ArtisanRating" ToRole="User" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StateID" Type="Int32" Nullable="false" />
+    <Property Name="CityName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="State" Relationship="HandyManModel.FK_City_State" FromRole="City" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="JobType" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Artisans" Relationship="HandyManModel.FK_Artisan_Job" FromRole="Job" ToRole="Artisan" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Cities" Relationship="HandyManModel.FK_City_State" FromRole="State" ToRole="City" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ArtisanRatings" Relationship="HandyManModel.FK_ArtisanRating_User" FromRole="User" ToRole="ArtisanRating" />
+  </EntityType>
+  <Association Name="FK_Artisan_Job">
+    <End Role="Job" Type="HandyManModel.Job" Multiplicity="1" />
+    <End Role="Artisan" Type="HandyManModel.Artisan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="Artisan">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArtisanRating_Artisan">
+    <End Role="Artisan" Type="HandyManModel.Artisan" Multiplicity="1" />
+    <End Role="ArtisanRating" Type="HandyManModel.ArtisanRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artisan">
+        <PropertyRef Name="ArtisanID" />
+      </Principal>
+      <Dependent Role="ArtisanRating">
+        <PropertyRef Name="ArtisanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArtisanRating_User">
+    <End Role="User" Type="HandyManModel.User" Multiplicity="1" />
+    <End Role="ArtisanRating" Type="HandyManModel.ArtisanRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ArtisanRating">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_State">
+    <End Role="State" Type="HandyManModel.State" Multiplicity="1" />
+    <End Role="City" Type="HandyManModel.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

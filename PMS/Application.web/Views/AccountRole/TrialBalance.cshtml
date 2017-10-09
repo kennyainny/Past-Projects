@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Application.Web.Models.AccountGroup>
+@{
+    ViewBag.Title = "TrialBalance";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+
+<div>
+    <ul class="breadcrumb">
+        <li class="active">@Html.ActionLink("Home", "Index", null, new { @class = "active" })</li>
+    </ul>
+</div>
+
+<div class="container-fluid">
+    <h2>Trial Balance </h2>
+    <p>
+        <a class="btn btn-info btn-medium" href="@Url.Action("ProfitAndLoss","Accountrole")">
+            <i class="fa fa-plus icon-white"></i> Download CSV
+        </a>
+
+        <a class="btn btn-success btn-medium" href="@Url.Action("ProfitAndLoss", "Accountrole")">
+            <i class="fa fa-plus icon-white"></i> Print Preview
+        </a>
+    </p>
+    <hr />
+    <div class="row-fluid">
+        <div class="block span5">
+            <a href="#tablewidget" class="block-heading" data-toggle="collapse">
+                Trial Balance 
+                <span class="label label-warning">+</span>
+            </a>
+            <div id="tablewidget" class="block-body collapse in">
+                @*<p><a href="users.html">More...</a></p>*@
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th> Ledger Account	</th>
+                            <th>O/P Balance</th>
+                            <th> C/L Balance</th>
+                            <th>	Dr Total</th>
+                            <th> Cr Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>
+                                    @item.name
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+</div>
